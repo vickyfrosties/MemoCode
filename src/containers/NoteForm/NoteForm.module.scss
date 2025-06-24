@@ -1,0 +1,41 @@
+.form {
+  width: 50dvw;
+  min-height: 80dvh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #e0e7ff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+
+  &_title_input {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+
+    input {
+      width: 50%;
+      padding: 5px;
+
+      &:focus {
+        border: 2px solid lightcoral;
+      }
+    }
+  }
+
+  &_description_input {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  &_submit_button {
+    width: 7rem;
+    height: 2rem;
+    cursor: pointer;
+    background-color: oklch(0.546 0.245 262.881);
+    color: white;
+    border: none;
+  }
+}

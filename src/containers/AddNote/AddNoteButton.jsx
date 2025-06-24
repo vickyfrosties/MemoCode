@@ -9,8 +9,12 @@ const AddNoteButton = () => {
 
   return (
     <>
-      <div className={style["button-container"]}>
-        <button className={style["button"]} autoFocus onClick={handleClick}>
+      <div className={style["container"]}>
+        <button
+          className={style["container_button"]}
+          autoFocus
+          onClick={handleClick}
+        >
           + Add note
         </button>
       </div>
