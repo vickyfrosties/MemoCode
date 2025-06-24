@@ -1,0 +1,14 @@
+.navigation {
+  //   background-color: rgb(248, 147, 147);
+  height: 5rem;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    background-color: rgb(248, 147, 147);
+    padding: 0 2rem 0 2rem;
+    border-radius: 20px;
+  }
+}
