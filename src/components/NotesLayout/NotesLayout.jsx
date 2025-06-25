@@ -5,7 +5,6 @@ import style from "./NotesLayout.module.scss";
 const NotesLayout = () => {
   return (
     <>
-      <AddNoteButton />
       <section className={style["notes-container"]}>
         <p>No current memo (✖╭╮✖)</p>
       </section>

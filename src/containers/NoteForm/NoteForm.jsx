@@ -1,17 +1,16 @@
-import { useRef, useState } from "react";
 import style from "./NoteForm.module.scss";
 
-const NoteForm = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    picture: "",
-    link: "",
-  });
-
+const NoteForm = ({ data, setFormData }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    console.log(data);
+
+    setFormData({
+      title: "",
+      description: "",
+      picture: "",
+      link: "",
+    });
   };
 
   return (
@@ -24,12 +23,10 @@ const NoteForm = () => {
             name="title"
             id="title"
             required
-            value={formData.title}
+            value={data.title}
             autoFocus
             autoComplete="off"
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...data, title: e.target.value })}
           />
         </label>
 
@@ -39,12 +36,12 @@ const NoteForm = () => {
             name="description"
             id="description"
             required
-            value={formData.description}
+            value={data.description}
             autoComplete="off"
             rows={10}
             cols={50}
             onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
+              setFormData({ ...data, description: e.target.value })
             }
           />
         </label>
@@ -55,11 +52,9 @@ const NoteForm = () => {
             type="url"
             name="picture"
             id="picture"
-            value={formData.picture}
+            value={data.picture}
             autoComplete="off"
-            onChange={(e) =>
-              setFormData({ ...formData, picture: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...data, picture: e.target.value })}
           />
         </label>
 
@@ -69,9 +64,9 @@ const NoteForm = () => {
             type="url"
             name="link"
             id="link"
-            value={formData.link}
+            value={data.link}
             autoComplete="off"
-            onChange={(e) => setFormData({ ...formData, link: e.target.value })}
+            onChange={(e) => setFormData({ ...data, link: e.target.value })}
           />
         </label>
 

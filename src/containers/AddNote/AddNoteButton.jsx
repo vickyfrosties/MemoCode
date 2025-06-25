@@ -1,11 +1,11 @@
 import style from "./AddNoteButton.module.scss";
 
 //* Open the "New note form" when clicked
-const AddNoteButton = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log("click");
-  };
+const AddNoteButton = ({ onAction }) => {
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   console.log("click");
+  // };
 
   return (
     <>
@@ -13,7 +13,7 @@ const AddNoteButton = () => {
         <button
           className={style["container_button"]}
           autoFocus
-          onClick={handleClick}
+          onClick={onAction}
         >
           + Add note
         </button>
