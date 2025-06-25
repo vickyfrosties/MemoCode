@@ -1,10 +1,12 @@
 import style from "./NoteForm.module.scss";
 
-const NoteForm = ({ data, setFormData }) => {
+const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
 
+    onSubmitHandle(data);
+
+    // * Reset data form after submit
     setFormData({
       title: "",
       description: "",
