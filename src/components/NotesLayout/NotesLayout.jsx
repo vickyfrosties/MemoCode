@@ -1,18 +1,13 @@
+import NotesCard from "../NotesCard/NotesCard";
 import style from "./NotesLayout.module.scss";
 
 // * Display the notes
 const NotesLayout = ({ newNote }) => {
   return (
     <>
+      <h2 className={style["notes-container-title"]}>My memos</h2>
       <section className={style["notes-container"]}>
-        {newNote.map((note, i) => (
-          <div key={i}>
-            <h3>{note.title} </h3>
-            <p>{note.description} </p>
-            <img src={note.picture} alt={note.title} />
-            <a href={note.link}>Source</a>
-          </div>
-        ))}
+        <NotesCard newNote={newNote} />
       </section>
     </>
   );

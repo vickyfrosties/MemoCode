@@ -27,7 +27,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             required
             value={data.title}
             autoFocus
-            autoComplete="off"
+            // autoComplete="off"
             onChange={(e) => setFormData({ ...data, title: e.target.value })}
           />
         </label>
@@ -39,7 +39,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             id="description"
             required
             value={data.description}
-            autoComplete="off"
+            // autoComplete="off"
             rows={10}
             cols={50}
             onChange={(e) =>
@@ -55,7 +55,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             name="picture"
             id="picture"
             value={data.picture}
-            autoComplete="off"
+            // autoComplete="off"
             onChange={(e) => setFormData({ ...data, picture: e.target.value })}
           />
         </label>
@@ -67,7 +67,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             name="link"
             id="link"
             value={data.link}
-            autoComplete="off"
+            // autoComplete="off"
             onChange={(e) => setFormData({ ...data, link: e.target.value })}
           />
         </label>
