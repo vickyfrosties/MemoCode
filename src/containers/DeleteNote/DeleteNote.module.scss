@@ -1,0 +1,22 @@
+.button-container {
+  display: flex;
+  justify-content: end;
+  padding-right: 1em;
+  margin: 5px 0 10px 0;
+  position: relative;
+  background-color: #d1fae5;
+  position: sticky;
+  top: 20%;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &-img {
+    width: 1.4em;
+    height: 1.4em;
+  }
+}

@@ -1,6 +1,9 @@
+import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({ newNote }) => {
+const NotesCard = ({ newNote, onDeleteHandle }) => {
+  console.log(newNote);
+
   return (
     <>
       {newNote.map((note, i) => (
@@ -13,6 +16,7 @@ const NotesCard = ({ newNote }) => {
             <div className={style["card_content_title"]}>
               <h3>{note.title} </h3>
             </div>
+            <DeleteNote onDeleteHandle={onDeleteHandle} />
             <p className={style["card_content_description"]}>
               {note.description}
             </p>

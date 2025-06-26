@@ -2,11 +2,6 @@ import style from "./AddNoteButton.module.scss";
 
 //* Open the "New note form" when clicked
 const AddNoteButton = ({ onAction }) => {
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   console.log("click");
-  // };
-
   return (
     <>
       <div className={style["container"]}>

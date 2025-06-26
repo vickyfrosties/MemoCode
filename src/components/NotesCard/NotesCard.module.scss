@@ -2,7 +2,6 @@
   background-color: #d1fae5;
   padding: 15px;
   text-wrap: wrap;
-  height: 100%;
   display: flex;
 
   &_picture_container {
@@ -31,7 +30,8 @@
   }
 
   &_content_description {
-    padding: 15px 0 3px 5px;
+    margin-top: 2rem;
+    padding: 0 0 3px 5px;
   }
 
   &_content_link {

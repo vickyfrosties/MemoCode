@@ -25,14 +25,19 @@ function App() {
   // setNotes(notes.push(data.title, data.description, data.picture, data.link));
 
   const handleNewNote = () => {
+    // * C'est ici que se génère le tableau avec les nouvelles données en reprenant l'objet de base formData
     setNotes([...notes, formData]);
+  };
+
+  const deleteNote = () => {
+    setNotes([]);
   };
 
   return (
     <>
       <NavBar />
       <AddNoteButton onAction={addForm} />
-      <NotesLayout newNote={notes} />
+      <NotesLayout newNote={notes} onDeleteHandle={deleteNote} />
       <NoteForm
         data={formData}
         setFormData={setFormData}
