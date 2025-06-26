@@ -1,14 +1,14 @@
 import style from "./DeleteNote.module.scss";
 
-const DeleteNote = ({ onDeleteHandle }) => {
+const DeleteNote = ({ onDeleteHandle, id }) => {
   return (
     <>
       <div className={style["button-container"]}>
-        <button onClick={onDeleteHandle}>
+        <button onClick={() => onDeleteHandle(id)}>
           <img
             className={style["button-container-img"]}
-            src="../../../public/assets/trash.svg"
-            alt="Delete note"
+            src="/assets/trash.svg"
+            alt="Delete note button"
           />
         </button>
       </div>

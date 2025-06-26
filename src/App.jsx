@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar/NavBar";
 import NotesLayout from "./components/NotesLayout/NotesLayout";
 import NoteForm from "./containers/NoteForm/NoteForm";
 import AddNoteButton from "./containers/AddNote/AddNoteButton";
+import { nanoid } from "nanoid";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -26,11 +27,16 @@ function App() {
 
   const handleNewNote = () => {
     // * C'est ici que se génère le tableau avec les nouvelles données en reprenant l'objet de base formData
-    setNotes([...notes, formData]);
+    const id = nanoid();
+
+    const newNoteId = { id, ...formData };
+    setNotes([...notes, newNoteId]);
   };
 
-  const deleteNote = () => {
-    setNotes([]);
+  const deleteNote = (idToDelete) => {
+    const noteToDelete = notes.filter((note) => note.id !== idToDelete);
+
+    setNotes(noteToDelete);
   };
 
   return (
