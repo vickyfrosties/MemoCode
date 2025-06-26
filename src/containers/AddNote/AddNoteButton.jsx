@@ -1,17 +1,16 @@
+import { Link } from "react-router";
 import style from "./AddNoteButton.module.scss";
 
 //* Open the "New note form" when clicked
-const AddNoteButton = ({ onAction }) => {
+const AddNoteButton = () => {
   return (
     <>
       <div className={style["container"]}>
-        <button
-          className={style["container_button"]}
-          autoFocus
-          onClick={onAction}
-        >
-          + Add note
-        </button>
+        <Link to="/form">
+          <button className={style["container_button"]} autoFocus>
+            + Add note
+          </button>
+        </Link>
       </div>
     </>
   );

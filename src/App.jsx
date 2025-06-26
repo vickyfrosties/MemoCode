@@ -5,6 +5,8 @@ import NotesLayout from "./components/NotesLayout/NotesLayout";
 import NoteForm from "./containers/NoteForm/NoteForm";
 import AddNoteButton from "./containers/AddNote/AddNoteButton";
 import { nanoid } from "nanoid";
+import { Route, Routes } from "react-router";
+import { useNavigate } from "react-router";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -16,10 +18,7 @@ function App() {
 
   const [notes, setNotes] = useState([]);
 
-  const addForm = (e) => {
-    e.preventDefault();
-    console.log("formulaire ouvert");
-  };
+  const navigate = useNavigate();
 
   // * Create data form array from data form updated
   // ! Attention, utiliser le ... "spread operator" pour ne pas perdre le tableau original. Push renvoie un number et écrase le tableau de base.
@@ -31,6 +30,7 @@ function App() {
 
     const newNoteId = { id, ...formData };
     setNotes([...notes, newNoteId]);
+    navigate("/");
   };
 
   const deleteNote = (idToDelete) => {
@@ -42,13 +42,25 @@ function App() {
   return (
     <>
       <NavBar />
-      <AddNoteButton onAction={addForm} />
-      <NotesLayout newNote={notes} onDeleteHandle={deleteNote} />
-      <NoteForm
-        data={formData}
-        setFormData={setFormData}
-        onSubmitHandle={handleNewNote}
-      />
+      <AddNoteButton />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<NotesLayout newNote={notes} onDeleteHandle={deleteNote} />}
+        />
+
+        <Route
+          path="/form"
+          element={
+            <NoteForm
+              data={formData}
+              setFormData={setFormData}
+              onSubmitHandle={handleNewNote}
+            />
+          }
+        />
+      </Routes>
     </>
   );
 }
