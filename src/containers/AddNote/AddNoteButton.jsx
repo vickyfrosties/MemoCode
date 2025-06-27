@@ -1,17 +1,22 @@
 import { Link } from "react-router";
 import style from "./AddNoteButton.module.scss";
+import SelectFilter from "../SelectFilter/SelectFilter";
 
 //* Open the "New note form" when clicked
-const AddNoteButton = () => {
+const AddNoteButton = ({ notes, setFormData }) => {
   return (
     <>
-      <div className={style["container"]}>
-        <Link to="/form">
-          <button className={style["container_button"]} autoFocus>
-            + Add note
-          </button>
-        </Link>
-      </div>
+      <section className={style["container"]}>
+        <SelectFilter notes={notes} setFormData={setFormData} />
+
+        <div className={style["container_button_form"]}>
+          <Link to="/form">
+            <button className={style["container_button"]} autoFocus>
+              + Add note
+            </button>
+          </Link>
+        </div>
+      </section>
     </>
   );
 };

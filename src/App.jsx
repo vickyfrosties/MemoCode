@@ -20,6 +20,8 @@ function App() {
 
   const [notes, setNotes] = useState([]);
 
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   const categoryColors = {
     programmation: "#2563EB",
     design: "#EC4899",
@@ -27,6 +29,11 @@ function App() {
     astronomy: "#3730A3",
     gaming: "#C62828",
   };
+
+  const visibleNotes =
+    selectedCategory === "All"
+      ? notes
+      : notes.filter((note) => note.category === selectedCategory);
 
   const navigate = useNavigate();
 
@@ -53,7 +60,7 @@ function App() {
     <>
       <section className="main-container">
         <NavBar />
-        <AddNoteButton />
+        <AddNoteButton notes={notes.category} setFormData={setFormData} />
 
         <Routes>
           <Route

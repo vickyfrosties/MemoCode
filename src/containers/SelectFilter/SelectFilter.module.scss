@@ -1,0 +1,17 @@
+.container {
+  &_filter {
+    width: 60%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    p {
+      margin-right: 1em;
+    }
+
+    select {
+      width: 200px;
+      padding: 0.9ch;
+    }
+  }
+}
