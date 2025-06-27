@@ -12,6 +12,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
       description: "",
       picture: "",
       link: "",
+      category: "",
     });
   };
 
@@ -30,6 +31,23 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             // autoComplete="off"
             onChange={(e) => setFormData({ ...data, title: e.target.value })}
           />
+        </label>
+
+        <label>
+          Category:
+          <select
+            name="category"
+            id="category-select"
+            required
+            onChange={(e) => setFormData({ ...data, category: e.target.value })}
+          >
+            <option value="">Choose a category</option>
+            <option value="programmation">Programmation</option>
+            <option value="design">UX/UI</option>
+            <option value="neuropsychology">Neuropsychology</option>
+            <option value="astronomy">Astronomy</option>
+            <option value="gaming">Gaming</option>
+          </select>
         </label>
 
         <label className={style["form_description_input"]}>
@@ -75,7 +93,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
         <input
           className={style["form_submit_button"]}
           type="submit"
-          value="Add note"
+          value="Submit note"
         />
       </form>
     </>

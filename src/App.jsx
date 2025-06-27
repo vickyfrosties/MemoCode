@@ -15,9 +15,18 @@ function App() {
     description: "",
     picture: "",
     link: "",
+    category: "",
   });
 
   const [notes, setNotes] = useState([]);
+
+  const categoryColors = {
+    programmation: "#2563EB",
+    design: "#EC4899",
+    neuropsychology: "#6B21A8",
+    astronomy: "#3730A3",
+    gaming: "#C62828",
+  };
 
   const navigate = useNavigate();
 
@@ -50,7 +59,11 @@ function App() {
           <Route
             path="/"
             element={
-              <NotesLayout newNote={notes} onDeleteHandle={deleteNote} />
+              <NotesLayout
+                newNote={notes}
+                onDeleteHandle={deleteNote}
+                categoryColors={categoryColors}
+              />
             }
           />
 
