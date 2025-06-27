@@ -12,18 +12,12 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .main-container {
-  flex: 1;
   padding-bottom: 3rem;
-}
-
-.footer {
-  background-color: #fccccc;
-  height: 10%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
+  flex-direction: column;
+  min-height: 100vh;
 }

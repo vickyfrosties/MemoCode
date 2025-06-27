@@ -7,6 +7,7 @@ import AddNoteButton from "./containers/AddNote/AddNoteButton";
 import { nanoid } from "nanoid";
 import { Route, Routes } from "react-router";
 import { useNavigate } from "react-router";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -66,9 +67,7 @@ function App() {
         </Routes>
       </section>
 
-      <footer className="footer">
-        <p>MemoCode 🤓</p>
-      </footer>
+      <Footer />
     </>
   );
 }

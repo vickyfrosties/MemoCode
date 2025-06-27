@@ -7,7 +7,13 @@ const NotesLayout = ({ newNote, onDeleteHandle }) => {
     <>
       <h2 className={style["notes-container-title"]}>My memos</h2>
       <section className={style["notes-container"]}>
-        <NotesCard newNote={newNote} onDeleteHandle={onDeleteHandle} />
+        {newNote.length > 0 ? (
+          <NotesCard newNote={newNote} onDeleteHandle={onDeleteHandle} />
+        ) : (
+          <div className={style["notes-container-void"]}>
+            <p>No current memo (✖╭╮✖)</p>
+          </div>
+        )}
       </section>
     </>
   );
