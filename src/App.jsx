@@ -41,26 +41,34 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <AddNoteButton />
+      <section className="main-container">
+        <NavBar />
+        <AddNoteButton />
 
-      <Routes>
-        <Route
-          path="/"
-          element={<NotesLayout newNote={notes} onDeleteHandle={deleteNote} />}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <NotesLayout newNote={notes} onDeleteHandle={deleteNote} />
+            }
+          />
 
-        <Route
-          path="/form"
-          element={
-            <NoteForm
-              data={formData}
-              setFormData={setFormData}
-              onSubmitHandle={handleNewNote}
-            />
-          }
-        />
-      </Routes>
+          <Route
+            path="/form"
+            element={
+              <NoteForm
+                data={formData}
+                setFormData={setFormData}
+                onSubmitHandle={handleNewNote}
+              />
+            }
+          />
+        </Routes>
+      </section>
+
+      <footer className="footer">
+        <p>MemoCode 🤓</p>
+      </footer>
     </>
   );
 }
