@@ -33,7 +33,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
           />
         </label>
 
-        <label>
+        <label className={style["form_category_select"]}>
           Category:
           <select
             name="category"
@@ -93,7 +93,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
         <input
           className={style["form_submit_button"]}
           type="submit"
-          value="Submit note"
+          value="✔ Submit note"
         />
       </form>
     </>

@@ -1,14 +1,18 @@
 import style from "./SelectFilter.module.scss";
 
-const SelectFilter = ({ notes }) => {
-  console.log(notes);
-
+const SelectFilter = ({ setSelectedCategory }) => {
   return (
     <>
       <div className={style["container_filter"]}>
         <p>Filter:</p>
-        <select name="filter-category" id="filter-category" onChange={notes}>
-          <option value="">Choose a category</option>
+        <select
+          name="filter-category"
+          id="filter-category"
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="" disabled>
+            Choose a category
+          </option>
           <option value="all">All</option>
           <option value="programmation">Programmation</option>
           <option value="design">UX/UI</option>

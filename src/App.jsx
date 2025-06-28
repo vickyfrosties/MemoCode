@@ -31,7 +31,7 @@ function App() {
   };
 
   const visibleNotes =
-    selectedCategory === "All"
+    !selectedCategory || selectedCategory === "all"
       ? notes
       : notes.filter((note) => note.category === selectedCategory);
 
@@ -60,13 +60,17 @@ function App() {
     <>
       <section className="main-container">
         <NavBar />
-        <AddNoteButton notes={notes.category} setFormData={setFormData} />
+        <AddNoteButton
+          visibleNotes={visibleNotes}
+          setSelectedCategory={setSelectedCategory}
+        />
 
         <Routes>
           <Route
             path="/"
             element={
               <NotesLayout
+                visibleNotes={visibleNotes}
                 newNote={notes}
                 onDeleteHandle={deleteNote}
                 categoryColors={categoryColors}
