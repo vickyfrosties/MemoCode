@@ -1,12 +1,7 @@
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({
-  visibleNotes,
-  onDeleteHandle,
-  categoryColors,
-  newNote,
-}) => {
+const NotesCard = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
   return (
     <>
       {visibleNotes.map((note) => (

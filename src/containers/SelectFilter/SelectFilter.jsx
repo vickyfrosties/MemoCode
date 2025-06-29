@@ -4,7 +4,7 @@ const SelectFilter = ({ setSelectedCategory }) => {
   return (
     <>
       <div className={style["container_filter"]}>
-        <p>Filter:</p>
+        <p>Filter by:</p>
         <select
           name="filter-category"
           id="filter-category"

@@ -22,6 +22,8 @@ function App() {
 
   const [selectedCategory, setSelectedCategory] = useState("all");
 
+  const [word, setWord] = useState("");
+
   const categoryColors = {
     programmation: "#2563EB",
     design: "#EC4899",
@@ -30,10 +32,18 @@ function App() {
     gaming: "#C62828",
   };
 
-  const visibleNotes =
-    !selectedCategory || selectedCategory === "all"
-      ? notes
-      : notes.filter((note) => note.category === selectedCategory);
+  const visibleNotes = notes.filter((note) => {
+    const filterSelect =
+      !selectedCategory ||
+      selectedCategory === "all" ||
+      note.category === selectedCategory;
+
+    const matchWord =
+      note.title.toLowerCase().includes(word.toLowerCase()) ||
+      note.description.toLowerCase().includes(word.toLowerCase());
+
+    return filterSelect && matchWord;
+  });
 
   const navigate = useNavigate();
 
@@ -63,6 +73,8 @@ function App() {
         <AddNoteButton
           visibleNotes={visibleNotes}
           setSelectedCategory={setSelectedCategory}
+          word={word}
+          setWord={setWord}
         />
 
         <Routes>
@@ -71,7 +83,6 @@ function App() {
             element={
               <NotesLayout
                 visibleNotes={visibleNotes}
-                newNote={notes}
                 onDeleteHandle={deleteNote}
                 categoryColors={categoryColors}
               />

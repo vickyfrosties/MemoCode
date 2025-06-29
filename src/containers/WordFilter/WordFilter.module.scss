@@ -1,0 +1,15 @@
+.word-filter-container {
+  //   border: 2px solid salmon;
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  p {
+    margin-right: 1em;
+  }
+
+  input {
+    padding: 0.3ch;
+    width: 50%;
+  }
+}
