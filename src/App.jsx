@@ -20,7 +20,7 @@ function App() {
 
   const [notes, setNotes] = useState([]);
 
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categoryColors = {
     programmation: "#2563EB",
