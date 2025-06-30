@@ -1,13 +1,23 @@
+@use "/src/breakpoints";
+
 .container {
   display: flex;
   margin: auto;
   margin-bottom: 2rem;
-  width: 80%;
-  justify-content: center;
+  width: 100%;
+  // justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
+  &_filter_section {
+    width: 55%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
   &_button_form {
-    width: 50%;
+    // width: 50%;
     display: flex;
     justify-content: end;
   }
@@ -26,6 +36,24 @@
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    &_filter_section {
+      flex-direction: column;
+      justify-content: space-between;
+      height: 65px;
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  .container {
+    &_filter_section {
+      width: 70%;
     }
   }
 }

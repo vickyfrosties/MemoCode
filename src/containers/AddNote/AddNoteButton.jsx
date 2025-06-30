@@ -15,17 +15,19 @@ const AddNoteButton = ({
   return (
     <>
       <section className={style["container"]}>
-        {location.pathname === "/" && (
-          <WordFilter
-            setWord={setWord}
-            handleWordFilter={handleWordFilter}
-            word={word}
-          />
-        )}
+        <section className={style["container_filter_section"]}>
+          {location.pathname === "/" && (
+            <WordFilter
+              setWord={setWord}
+              handleWordFilter={handleWordFilter}
+              word={word}
+            />
+          )}
 
-        {location.pathname === "/" && (
-          <SelectFilter setSelectedCategory={setSelectedCategory} />
-        )}
+          {location.pathname === "/" && (
+            <SelectFilter setSelectedCategory={setSelectedCategory} />
+          )}
+        </section>
 
         {location.pathname === "/" && (
           <div className={style["container_button_form"]}>

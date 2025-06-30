@@ -26,9 +26,8 @@ function App() {
 
   const categoryColors = {
     programmation: "#2563EB",
-    design: "#EC4899",
     neuropsychology: "#6B21A8",
-    astronomy: "#3730A3",
+    astronomy: "#C04278",
     gaming: "#C62828",
   };
 

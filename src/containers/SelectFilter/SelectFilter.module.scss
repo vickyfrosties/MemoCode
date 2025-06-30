@@ -1,6 +1,6 @@
 .container {
   &_filter {
-    width: 60%;
+    // width: 60%;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -12,6 +12,16 @@
     select {
       width: 200px;
       padding: 0.5ch;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    &_filter {
+      justify-content: start;
+
+      width: 100%;
     }
   }
 }
