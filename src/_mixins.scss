@@ -1,0 +1,13 @@
+@import "./breakpoints";
+
+@mixin sm-phone {
+  @media (max-width: $phone) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (min-width: $phone) and (max-width: $tablet) {
+    @content;
+  }
+}

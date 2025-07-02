@@ -1,6 +1,6 @@
+@import "/src/mixins";
+
 .word-filter-container {
-  //   border: 2px solid salmon;
-  // width: 50%;
   display: flex;
   align-items: center;
 
@@ -11,6 +11,13 @@
   input {
     padding: 0.3ch;
     width: 50%;
+  }
+
+  @include sm-phone {
+    input {
+      width: 100%;
+      padding: 5px;
+    }
   }
 }
 
