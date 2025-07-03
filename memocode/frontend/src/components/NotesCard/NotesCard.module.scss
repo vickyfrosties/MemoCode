@@ -1,4 +1,4 @@
-@import "/src/mixins";
+@use "/src/mixins";
 
 .card {
   background-color: #d1fae5;
@@ -7,7 +7,7 @@
   display: flex;
   height: 300px;
 
-  @include sm-phone {
+  @include mixins.sm-phone {
     width: 15%;
     height: 10px;
   }
@@ -21,7 +21,7 @@
       object-fit: cover;
     }
 
-    @include sm-phone {
+    @include mixins.sm-phone {
       img {
         display: none;
       }
@@ -64,7 +64,7 @@
     }
   }
 
-  @include sm-phone {
+  @include mixins.sm-phone {
     &_content_description,
     &_content_link {
       display: none;

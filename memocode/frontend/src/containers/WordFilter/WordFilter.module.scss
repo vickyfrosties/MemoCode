@@ -1,4 +1,4 @@
-@import "/src/mixins";
+@use "/src/mixins";
 
 .word-filter-container {
   display: flex;
@@ -13,7 +13,7 @@
     width: 50%;
   }
 
-  @include sm-phone {
+  @include mixins.sm-phone {
     input {
       width: 100%;
       padding: 5px;

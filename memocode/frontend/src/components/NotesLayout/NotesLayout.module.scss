@@ -1,4 +1,4 @@
-@import "/src/mixins";
+@use "/src/mixins";
 
 .notes-container {
   width: 80vw;
@@ -24,11 +24,11 @@
     align-items: center;
   }
 
-  @include phone {
+  @include mixins.phone {
     background-color: red;
   }
 
-  @include sm-phone {
+  @include mixins.sm-phone {
     background-color: magenta;
     width: 100%;
     display: flex;
