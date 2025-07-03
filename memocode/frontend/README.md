@@ -1,1 +1,1 @@
-# MemoCode Front End
+# MemoCode Frontend
