@@ -1,10 +1,16 @@
 const express = require("express");
 const app = express();
-const port = 8080;
+const port = 8000;
+const cors = require("cors");
 
-app.get("/", (request, response) => {
-  response.send("Hello World 🤓");
-  console.log(request.rawHeaders);
+let corsOptions = {
+  origin: "http://localhost:5173",
+  methods: "GET, PUT, POST, DELETE",
+  allowedHeaders: "Content-Type",
+};
+
+app.get("/", cors(corsOptions), (request, response) => {
+  response.sendStatus(200);
 });
 
 app.listen(port, () => {
