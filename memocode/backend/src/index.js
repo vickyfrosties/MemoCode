@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const cors = require("cors");
+const { ATLAS_URI } = import.meta.env;
 
 let corsOptions = {
   origin: "http://localhost:5173",
