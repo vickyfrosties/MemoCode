@@ -56,7 +56,7 @@ function App() {
 
     const newNoteId = { id, ...formData };
     setNotes([...notes, newNoteId]);
-    navigate("/");
+    navigate("/notes");
   };
 
   const deleteNote = (idToDelete) => {
@@ -69,16 +69,21 @@ function App() {
     <>
       <section className="main-container">
         <NavBar />
-        <AddNoteButton
-          visibleNotes={visibleNotes}
-          setSelectedCategory={setSelectedCategory}
-          word={word}
-          setWord={setWord}
-        />
-
         <Routes>
           <Route
             path="/"
+            element={
+              <AddNoteButton
+                visibleNotes={visibleNotes}
+                setSelectedCategory={setSelectedCategory}
+                word={word}
+                setWord={setWord}
+              />
+            }
+          />
+
+          <Route
+            path="/notes"
             element={
               <NotesLayout
                 visibleNotes={visibleNotes}

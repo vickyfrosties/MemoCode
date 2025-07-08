@@ -9,7 +9,7 @@ let corsOptions = {
   allowedHeaders: "Content-Type",
 };
 
-app.get("/", cors(corsOptions), (request, response) => {
+app.get("/notes", cors(corsOptions), (request, response) => {
   response.sendStatus(200);
 });
 
