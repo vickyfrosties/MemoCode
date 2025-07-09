@@ -1,8 +1,8 @@
 import express from "express";
-const app = express();
-const port = 8000;
 import cors from "cors";
 import "dotenv/config";
+const app = express();
+const PORT = 8000;
 const { ATLAS_URI } = process.env.ATLAS_URI;
 
 let corsOptions = {
@@ -17,6 +17,6 @@ app.get("/notes", cors(corsOptions), (request, response) => {
 
 // TODO : Créer une fonction pour lancer le serveur une fois connecté à la base de données.
 
-app.listen(port, () => {
-  console.log("Server is running on:", { port });
+app.listen(PORT, () => {
+  console.log("Server is running on:", { PORT });
 });
