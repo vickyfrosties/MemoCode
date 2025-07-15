@@ -1,12 +1,11 @@
-//  TODO : Créer les routes pour :
 import express from "express";
-const router = express.Router();
+const notesRouter = express.Router();
 
 // * - lire les notes,
-router.get("/notes", getNotes());
+notesRouter.get("/notes", getNotes());
 // * - ajouter une nouvelle note,
-router.post("/notes", createNote());
+notesRouter.post("/notes", createNote());
 // * - supprimer une note spécifique,
-router.delete("/notes/:id", deleteNote());
+notesRouter.delete("/notes/:id", deleteNote());
 
-module.exports = router;
+module.exports = notesRouter;

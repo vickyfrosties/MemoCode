@@ -3,11 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
 const app = express();
-const PORT = 8000;
 dotenv.config();
 
 let corsOptions = {
-  origin: "http://localhost:5173",
+  origin: process.env.CLIENT_PORT,
   methods: "GET, PUT, POST, DELETE",
   allowedHeaders: "Content-Type",
 };
@@ -23,11 +22,11 @@ async function startServer() {
   try {
     //* Le serveur établit la connexion avec la base de données via l'instance client
     await client.connect();
-    console.log("MongoDB connected!");
+    console.log("MongoDB is connected!");
 
     //* Démarre le serveur Express sur le port défini
-    app.listen(PORT, () => {
-      console.log(`Server is running on PORT ${PORT}`);
+    app.listen(process.env.SERVER_PORT, () => {
+      console.log(`Server is running on PORT ${process.env.SERVER_PORT}`);
     });
   } catch (error) {
     //* Capture les erreurs liées à la connexion MongoDB et les affiche dans la console
@@ -35,8 +34,8 @@ async function startServer() {
   }
 }
 
-app.listen(PORT, () => {
-  console.log("Server is running on:", { PORT });
+app.listen(process.env.SERVER_PORT, () => {
+  console.log("Server is running on:", process.env.SERVER_PORT);
 });
 
 startServer();
