@@ -6,15 +6,15 @@ export async function getNotes(request, response) {
   try {
     await client.connect();
 
-    const dbConnection = client.db("sample_mflix").collection("movies");
+    const dbConnection = client.db("sample_mflix");
+    const notesCollection = dbConnection.collection("movies");
 
-    const dataResult = dbConnection.find();
-    const dataArray = await dataResult.toArray();
+    const dataResult = notesCollection.find();
+    const dataArray = (await dataResult.toArray()).slice(0, 5);
 
     if (dataArray.length === 0) {
       return response.status(404).json({ message: "No data is available" });
     }
-    console.log(dataArray.slice(0, 3));
 
     return response.status(200).json({
       message: "Fetch data from request is a success :D",
@@ -22,9 +22,7 @@ export async function getNotes(request, response) {
     });
   } catch (error) {
     console.error("erreur lors de la requête getNotes", error);
-    return response
-      .status(500)
-      .json({ message: "Erreur pendant la requete db" });
+    return response.status(500).json({ message: "Error while fetch request" });
   } finally {
     await client.close();
   }

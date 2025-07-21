@@ -5,7 +5,7 @@ import style from "./NotesLayout.module.scss";
 // * Display the notes
 const NotesLayout = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
   useEffect(() => {
-    fetch("http://127.0.0.1:5173/notes", {
+    fetch("http://localhost:3000", {
       mode: "cors",
       method: "GET",
       headers: {
