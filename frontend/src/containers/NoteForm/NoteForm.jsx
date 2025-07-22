@@ -1,6 +1,29 @@
+import { useEffect } from "react";
 import style from "./NoteForm.module.scss";
 
 const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
+  useEffect(() => {
+    fetch("http://localhost:8000/form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response);
+        }
+        return response.json;
+      })
+      .then((data) => {
+        console.log("Data from POST request:", data);
+      })
+      .catch((error) => {
+        console.log("Erreur de la requête:", error);
+      });
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
