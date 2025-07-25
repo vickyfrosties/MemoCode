@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 // * - lire les notes,
 export async function getNotes(request, response) {
@@ -58,3 +58,33 @@ export async function createNote(request, response) {
   }
 }
 // * - supprimer une note spécifique,
+export async function deleteNote(request, response) {
+  // * Retrieve id from request params
+  const id = request.params.id;
+
+  const client = new MongoClient(process.env.ATLAS_URI);
+
+  try {
+    if (!id) {
+      throw new Error("None id has been found");
+    }
+
+    const noteColl = client.db("memocode").collection("notes");
+    // * Convert id to match MongoDB ObjectId format and delete it
+    const noteToDelete = await noteColl.deleteOne({ _id: new ObjectId(id) });
+
+    console.log("note supprimée :", noteToDelete);
+
+    return response.status(200).json({
+      message: `Note id: ${id} has been deleted successfully!`,
+      success: true,
+    });
+  } catch (error) {
+    console.error("Something went wrong with DELETE request");
+    return response.status(500).json({
+      message: "Network error",
+      success: false,
+      error: error.message,
+    });
+  }
+}
