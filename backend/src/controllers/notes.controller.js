@@ -28,6 +28,35 @@ export async function getNotes(request, response) {
   }
 }
 
+// * - lire une note,
+export async function getNoteById(request, response) {
+  const noteId = request.params.id;
+  console.log(noteId);
+
+  const client = new MongoClient(process.env.ATLAS_URI);
+  try {
+    const collection = client.db("memocode").collection("notes");
+
+    const myNote = collection.find({ _id: new ObjectId(noteId) });
+
+    const result = await myNote.toArray();
+
+    return response.status(200).json({
+      message: response.message,
+      success: true,
+      body: result,
+    });
+  } catch (error) {
+    console.error("Something went wrong", error.message);
+
+    return response.status(500).json({
+      message: "Note by id cannot be choose",
+      error: error.message,
+      success: false,
+    });
+  }
+}
+
 // * - ajouter une nouvelle note,
 export async function createNote(request, response) {
   const newNote = {
