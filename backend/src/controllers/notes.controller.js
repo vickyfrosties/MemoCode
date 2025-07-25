@@ -13,7 +13,7 @@ export async function getNotes(request, response) {
     const dataArray = await dataResult.toArray();
 
     if (dataArray.length === 0) {
-      return response.status(404).json({ message: "No data is available" });
+      throw new Error("There no data in the moment");
     }
 
     return response.status(200).json({
@@ -22,7 +22,9 @@ export async function getNotes(request, response) {
     });
   } catch (error) {
     console.error("erreur lors de la requête getNotes", error);
-    return response.status(500).json({ message: "Error while fetch request" });
+    return response
+      .status(500)
+      .json({ message: "Error while fetch request", error: error.message });
   } finally {
     await client.close();
   }
@@ -76,16 +78,25 @@ export async function createNote(request, response) {
 
     const noteCollectionSchema = await notesDb.createCollection("notes");
 
+    if (!newNote) {
+      throw new Error("Aucune note n'a été interceptée");
+    }
     const resultWithInsert = await noteCollectionSchema.insertOne(newNote);
 
-    console.log(`Id note : ${result.insertedId}:`, result);
-    return response.status(200).json({ message: "Note added successfully !" });
+    return response
+      .status(200)
+      .json({ message: "Note added successfully !", success: true });
   } catch (error) {
-    console.error("Something went wrong :", error);
+    console.error("Something went wrong", error.message);
 
-    response.status(500).json("Server error from post request");
+    response.status(500).json({
+      message: "Network error",
+      success: false,
+      error: error.message,
+    });
   }
 }
+
 // * - supprimer une note spécifique,
 export async function deleteNote(request, response) {
   // * Retrieve id from request params
