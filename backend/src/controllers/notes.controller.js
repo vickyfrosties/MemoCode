@@ -37,6 +37,7 @@ export async function createNote(request, response) {
     link: request.body.link,
     category: request.body.category,
   };
+  console.log("Nouvelle note ajoutée :", newNote);
 
   const client = new MongoClient(process.env.ATLAS_URI);
 
@@ -44,11 +45,15 @@ export async function createNote(request, response) {
     await client.connect();
     const notesDb = client.db("memocode");
 
-    const result = await notesDb.collection("notes").insertOne(newNote);
+    const noteCollectionSchema = await notesDb.createCollection("notes");
+
+    const resultWithInsert = await noteCollectionSchema.insertOne(newNote);
 
     console.log(`Id note : ${result.insertedId}:`, result);
     return response.status(200).json({ message: "Note added successfully !" });
   } catch (error) {
+    console.error("Something went wrong :", error);
+
     response.status(500).json("Server error from post request");
   }
 }
