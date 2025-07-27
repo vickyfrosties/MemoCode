@@ -4,8 +4,6 @@ import { MongoClient, ObjectId } from "mongodb";
 export async function getNotes(request, response) {
   const client = new MongoClient(process.env.ATLAS_URI);
   try {
-    await client.connect();
-
     const dbConnection = client.db("memocode");
     const notesCollection = dbConnection.collection("notes");
 
@@ -13,18 +11,19 @@ export async function getNotes(request, response) {
     const dataArray = await dataResult.toArray();
 
     if (dataArray.length === 0) {
-      throw new Error("There no data in the moment");
+      throw new Error("There's no current data stored");
     }
 
     return response.status(200).json({
-      message: "Fetch data from request is a success :D",
+      message: "Fetch data from request is a success",
       data: dataArray,
     });
   } catch (error) {
-    console.error("erreur lors de la requête getNotes", error);
-    return response
-      .status(500)
-      .json({ message: "Error while fetch request", error: error.message });
+    return response.status(500).json({
+      success: false,
+      message: "Network error",
+      error: error.message,
+    });
   } finally {
     await client.close();
   }
@@ -79,7 +78,6 @@ export async function createNote(request, response) {
     link: request.body.link,
     category: request.body.category,
   };
-  console.log("Nouvelle note ajoutée :", newNote);
 
   const client = new MongoClient(process.env.ATLAS_URI);
 
@@ -90,21 +88,21 @@ export async function createNote(request, response) {
     const noteCollectionSchema = await notesDb.createCollection("notes");
 
     if (!newNote) {
-      throw new Error("Aucune note n'a été interceptée");
+      throw new Error("No notes were catched");
     }
-    const resultWithInsert = await noteCollectionSchema.insertOne(newNote);
+    const noteToCreate = await noteCollectionSchema.insertOne(newNote);
 
     return response
       .status(200)
       .json({ message: "Note added successfully !", success: true });
   } catch (error) {
-    console.error("Something went wrong", error.message);
-
     response.status(500).json({
       message: "Network error",
       success: false,
       error: error.message,
     });
+  } finally {
+    await client.close();
   }
 }
 
@@ -116,10 +114,6 @@ export async function deleteNote(request, response) {
   const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
-    if (!id) {
-      throw new Error("None id has been found");
-    }
-
     const noteColl = client.db("memocode").collection("notes");
     // * Convert id to match MongoDB ObjectId format and delete it
     if (!ObjectId.isValid) {
