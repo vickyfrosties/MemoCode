@@ -1,4 +1,4 @@
-import express, { response } from "express";
+import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
@@ -10,7 +10,7 @@ const originFront = process.env.CLIENT_PORT || 5173;
 const originServer = process.env.SERVER_PORT || 8000;
 
 let corsOptions = {
-  origin: originFront,
+  origin: `http://localhost:${originFront}`,
   methods: ["GET, PUT, POST, DELETE"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],

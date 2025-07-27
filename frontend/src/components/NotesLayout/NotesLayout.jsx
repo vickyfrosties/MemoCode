@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NotesCard from "../NotesCard/NotesCard";
 import style from "./NotesLayout.module.scss";
 
 // * Display the notes
 const NotesLayout = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
+  const [myNotes, setMyNotes] = useState([]);
+
   useEffect(() => {
-    fetch("http://localhost:3000", {
+    fetch("http://localhost:8000/notes", {
       mode: "cors",
       method: "GET",
       headers: {
@@ -20,10 +22,11 @@ const NotesLayout = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
       })
 
       .then((data) => {
-        console.log(data);
+        setMyNotes(data.data);
+        console.log(data.data);
       })
       .catch((error) => {
-        console.log("Erreur de la requête:", error);
+        console.error(error.message);
       });
   }, []);
 
@@ -31,17 +34,12 @@ const NotesLayout = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
     <>
       <h2 className={style["notes-container-title"]}>My memos</h2>
       <section className={style["notes-container"]}>
-        {visibleNotes.length > 0 ? (
-          <NotesCard
-            visibleNotes={visibleNotes}
-            onDeleteHandle={onDeleteHandle}
-            categoryColors={categoryColors}
-          />
-        ) : (
-          <div className={style["notes-container-void"]}>
-            <p>No current memo (✖╭╮✖)</p>
-          </div>
-        )}
+        <NotesCard
+          visibleNotes={visibleNotes}
+          onDeleteHandle={onDeleteHandle}
+          categoryColors={categoryColors}
+          notesFetch={myNotes}
+        />
       </section>
     </>
   );
