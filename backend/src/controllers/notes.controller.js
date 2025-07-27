@@ -33,29 +33,40 @@ export async function getNotes(request, response) {
 // * - lire une note,
 export async function getNoteById(request, response) {
   const noteId = request.params.id;
-  console.log(noteId);
+
+  if (!ObjectId.isValid(noteId)) {
+    return response.status(400).json({
+      message: "Invalid ID format",
+      success: false,
+    });
+  }
 
   const client = new MongoClient(process.env.ATLAS_URI);
+
   try {
-    const collection = client.db("memocode").collection("notes");
+    const notesCollection = client.db("memocode").collection("notes");
 
-    const myNote = collection.find({ _id: new ObjectId(noteId) });
+    const note = await notesCollection.findOne({ _id: new ObjectId(noteId) });
 
-    const result = await myNote.toArray();
+    if (!note) {
+      return response.status(404).json({
+        message: "This memo doesn't exist ;(",
+        success: false,
+      });
+    }
 
     return response.status(200).json({
-      message: response.message,
       success: true,
-      body: result,
+      data: note,
     });
   } catch (error) {
-    console.error("Something went wrong", error.message);
-
     return response.status(500).json({
       message: "Note by id cannot be choose",
       error: error.message,
       success: false,
     });
+  } finally {
+    await client.close();
   }
 }
 
@@ -111,20 +122,22 @@ export async function deleteNote(request, response) {
 
     const noteColl = client.db("memocode").collection("notes");
     // * Convert id to match MongoDB ObjectId format and delete it
+    if (!ObjectId.isValid) {
+      throw new Error("ObjectId format is not valid, id must be a string");
+    }
     const noteToDelete = await noteColl.deleteOne({ _id: new ObjectId(id) });
 
-    console.log("note supprimée :", noteToDelete);
-
     return response.status(200).json({
-      message: `Note id: ${id} has been deleted successfully!`,
+      message: `Note with id: ${id} has been deleted successfully!`,
       success: true,
     });
   } catch (error) {
-    console.error("Something went wrong with DELETE request");
     return response.status(500).json({
       message: "Network error",
       success: false,
       error: error.message,
     });
+  } finally {
+    await client.close();
   }
 }
