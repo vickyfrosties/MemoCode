@@ -2,32 +2,43 @@ import { useEffect } from "react";
 import style from "./NoteForm.module.scss";
 
 const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
-  useEffect(() => {
-    fetch("http://localhost:8000/form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
+  async function createNote() {
+    fetch(
+      "http://localhost:8000/form",
+
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((response) => {
         if (!response.ok) {
           return Promise.reject(response);
         }
-        return response.json;
-      })
-      .then((data) => {
-        console.log("Data from POST request:", data);
+        alert("Form has been submitted !");
       })
       .catch((error) => {
         console.log("Erreur de la requête:", error);
       });
-  }, []);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      !data.title ||
+      !data.category ||
+      !data.description ||
+      !data.picture ||
+      data.length === 0
+    ) {
+      throw new Error("All inputs are mandatory and must be filled.");
+    }
 
     onSubmitHandle(data);
+    createNote();
 
     // * Reset data form after submit
     setFormData({
@@ -48,7 +59,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             type="text"
             name="title"
             id="title"
-            required
+            // required
             value={data.title}
             autoFocus
             // autoComplete="off"
@@ -61,7 +72,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
           <select
             name="category"
             id="category-select"
-            required
+            // required
             onChange={(e) => setFormData({ ...data, category: e.target.value })}
           >
             <option value="">Choose a category</option>
@@ -77,7 +88,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
           <textarea
             name="description"
             id="description"
-            required
+            // required
             value={data.description}
             // autoComplete="off"
             rows={10}
@@ -107,6 +118,7 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
             name="link"
             id="link"
             value={data.link}
+            // required
             // autoComplete="off"
             onChange={(e) => setFormData({ ...data, link: e.target.value })}
           />
