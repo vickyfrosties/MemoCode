@@ -1,12 +1,7 @@
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({
-  onDeleteHandle,
-  categoryColors,
-  visibleNotes,
-  notesFetch,
-}) => {
+const NotesCard = ({ onDeleteHandle, categoryColors, notesFetch }) => {
   if (!notesFetch || notesFetch.length === 0) {
     return <p>Loading...</p>;
   }

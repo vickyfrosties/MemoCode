@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import NotesCard from "../NotesCard/NotesCard";
 import style from "./NotesLayout.module.scss";
+import AddNoteButton from "../../containers/AddNote/AddNoteButton";
 
 // * Display the notes
-const NotesLayout = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
+const NotesLayout = ({
+  onDeleteHandle,
+  categoryColors,
+  visibleNotes,
+  setSelectedCategory,
+  word,
+  setWord,
+}) => {
   const [myNotes, setMyNotes] = useState([]);
 
   useEffect(() => {
@@ -33,6 +41,13 @@ const NotesLayout = ({ onDeleteHandle, categoryColors, visibleNotes }) => {
   return (
     <>
       <h2 className={style["notes-container-title"]}>My memos</h2>
+      <AddNoteButton
+        visibleNotes={visibleNotes}
+        setSelectedCategory={setSelectedCategory}
+        word={word}
+        setWord={setWord}
+      />
+
       <section className={style["notes-container"]}>
         <NotesCard
           visibleNotes={visibleNotes}

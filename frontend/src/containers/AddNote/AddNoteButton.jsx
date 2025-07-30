@@ -16,7 +16,7 @@ const AddNoteButton = ({
     <>
       <section className={style["container"]}>
         <section className={style["container_filter_section"]}>
-          {location.pathname === "/" && (
+          {location.pathname === "/notes" && (
             <WordFilter
               setWord={setWord}
               handleWordFilter={handleWordFilter}
@@ -24,12 +24,12 @@ const AddNoteButton = ({
             />
           )}
 
-          {location.pathname === "/" && (
+          {location.pathname === "/notes" && (
             <SelectFilter setSelectedCategory={setSelectedCategory} />
           )}
         </section>
 
-        {location.pathname === "/" && (
+        {location.pathname === "/notes" && (
           <div className={style["container_button_form"]}>
             <Link to="/form">
               <button className={style["container_button"]} autoFocus>

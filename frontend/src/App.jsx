@@ -3,9 +3,8 @@ import "./App.scss";
 import NavBar from "./components/NavBar/NavBar";
 import NotesLayout from "./components/NotesLayout/NotesLayout";
 import NoteForm from "./containers/NoteForm/NoteForm";
-import AddNoteButton from "./containers/AddNote/AddNoteButton";
 import { nanoid } from "nanoid";
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { useNavigate } from "react-router";
 import Footer from "./components/Footer/Footer";
 
@@ -70,17 +69,7 @@ function App() {
       <section className="main-container">
         <NavBar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <AddNoteButton
-                visibleNotes={visibleNotes}
-                setSelectedCategory={setSelectedCategory}
-                word={word}
-                setWord={setWord}
-              />
-            }
-          />
+          <Route path="/" element={<Navigate to="/notes" />} />
 
           <Route
             path="/notes"
@@ -89,6 +78,9 @@ function App() {
                 visibleNotes={visibleNotes}
                 onDeleteHandle={deleteNote}
                 categoryColors={categoryColors}
+                setSelectedCategory={setSelectedCategory}
+                word={word}
+                setWord={setWord}
               />
             }
           />
