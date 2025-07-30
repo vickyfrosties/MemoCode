@@ -3,7 +3,7 @@ import style from "./NotesCard.module.scss";
 
 const NotesCard = ({ onDeleteHandle, categoryColors, notesFetch }) => {
   if (!notesFetch || notesFetch.length === 0) {
-    return <p>Loading...</p>;
+    return <p className={style["spinner_message"]}>Loading...</p>;
   }
   return (
     <>
@@ -14,32 +14,41 @@ const NotesCard = ({ onDeleteHandle, categoryColors, notesFetch }) => {
               <img src={note.picture || null} alt={note.title} />
             </div>
 
-            <div className={style["card_content"]}>
-              <div className={style["card_content_title"]}>
-                <h3>{note.title}</h3>
+            <section className={style["card_second_section"]}>
+              <div className={style["card_content"]}>
+                <div className={style["card_content_title"]}>
+                  <h3>{note.title}</h3>
+                </div>
+                <section className={style["card_content_section"]}>
+                  <div
+                    style={{
+                      background: `${categoryColors[note.category]}`,
+                      width: "auto",
+                      padding: "0 3px 0 3px",
+                      height: "15px",
+                      borderRadius: "1em",
+                      marginTop: "1ch",
+                      marginLeft: "1ch",
+                    }}
+                  >
+                    <p>{note.category} </p>
+                  </div>
+                  <DeleteNote onDeleteHandle={onDeleteHandle} id={note._id} />
+                </section>
               </div>
-              <div
-                style={{
-                  background: `${categoryColors[note.category]}`,
-                  width: "30px",
-                  height: "15px",
-                  borderRadius: "1em",
-                  marginTop: "1ch",
-                  marginLeft: "1ch",
-                }}
-              ></div>
-            </div>
-            <DeleteNote onDeleteHandle={onDeleteHandle} id={note._id} />
-            <p className={style["card_content_description"]}>
-              {note.description}
-            </p>
+              <div className={style["card_container_content_description"]}>
+                <p className={style["card_content_description"]}>
+                  {note.description}
+                </p>
+              </div>
 
-            <div className={style["card_content_link"]}>
-              <p>Source:</p>
-              <a href={note.link} target="_blank">
-                <p>Visit link</p>
-              </a>
-            </div>
+              <div className={style["card_content_link"]}>
+                <p>Source:</p>
+                <a href={note.link} target="_blank">
+                  <p>Visit link</p>
+                </a>
+              </div>
+            </section>
           </div>
         ))
       ) : (
