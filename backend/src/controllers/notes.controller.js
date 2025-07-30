@@ -11,7 +11,10 @@ export async function getNotes(request, response) {
     const dataArray = await dataResult.toArray();
 
     if (dataArray.length === 0) {
-      throw new Error("There's no current data stored");
+      return response.json({
+        message: "There's no current data stored",
+      });
+      // throw new Error("There's no current data stored");
     }
 
     return response.status(200).json({

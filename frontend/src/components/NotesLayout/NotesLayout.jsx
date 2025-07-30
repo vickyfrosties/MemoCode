@@ -31,10 +31,9 @@ const NotesLayout = ({
 
       .then((data) => {
         setMyNotes(data.data);
-        console.log(data.data);
       })
       .catch((error) => {
-        console.error(error.message);
+        throw new Error(error);
       });
   }, []);
 
