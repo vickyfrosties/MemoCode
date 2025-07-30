@@ -7,12 +7,25 @@ import AddNoteButton from "../../containers/AddNote/AddNoteButton";
 const NotesLayout = ({
   onDeleteHandle,
   categoryColors,
-  visibleNotes,
   setSelectedCategory,
+  selectedCategory,
   word,
   setWord,
 }) => {
   const [myNotes, setMyNotes] = useState([]);
+
+  const notesFiltered = myNotes.filter((note) => {
+    const filterSelect =
+      !selectedCategory ||
+      selectedCategory === "all" ||
+      note.category === selectedCategory;
+
+    const matchWord =
+      note.title.toLowerCase().includes(word.toLowerCase()) ||
+      note.description.toLowerCase().includes(word.toLowerCase());
+
+    return filterSelect && matchWord;
+  });
 
   useEffect(() => {
     fetch("http://localhost:8000/notes", {
@@ -41,7 +54,6 @@ const NotesLayout = ({
     <>
       <h2 className={style["notes-container-title"]}>My memos</h2>
       <AddNoteButton
-        visibleNotes={visibleNotes}
         setSelectedCategory={setSelectedCategory}
         word={word}
         setWord={setWord}
@@ -49,10 +61,10 @@ const NotesLayout = ({
 
       <section className={style["notes-container"]}>
         <NotesCard
-          visibleNotes={visibleNotes}
+          notesFiltered={notesFiltered}
           onDeleteHandle={onDeleteHandle}
           categoryColors={categoryColors}
-          notesFetch={myNotes}
+          // notesFetch={myNotes}
         />
       </section>
     </>

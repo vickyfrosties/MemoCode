@@ -30,19 +30,6 @@ function App() {
     gaming: "#C62828",
   };
 
-  const visibleNotes = notes.filter((note) => {
-    const filterSelect =
-      !selectedCategory ||
-      selectedCategory === "all" ||
-      note.category === selectedCategory;
-
-    const matchWord =
-      note.title.toLowerCase().includes(word.toLowerCase()) ||
-      note.description.toLowerCase().includes(word.toLowerCase());
-
-    return filterSelect && matchWord;
-  });
-
   const navigate = useNavigate();
 
   // * Create data form array from data form updated
@@ -75,7 +62,8 @@ function App() {
             path="/notes"
             element={
               <NotesLayout
-                visibleNotes={visibleNotes}
+                selectedCategory={selectedCategory}
+                // visibleNotes={visibleNotes}
                 onDeleteHandle={deleteNote}
                 categoryColors={categoryColors}
                 setSelectedCategory={setSelectedCategory}

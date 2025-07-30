@@ -1,14 +1,11 @@
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({ onDeleteHandle, categoryColors, notesFetch }) => {
-  if (!notesFetch || notesFetch.length === 0) {
-    return <p className={style["spinner_message"]}>Loading...</p>;
-  }
+const NotesCard = ({ onDeleteHandle, categoryColors, notesFiltered }) => {
   return (
     <>
-      {notesFetch.length > 0 ? (
-        notesFetch.map((note) => (
+      {notesFiltered.length > 0 ? (
+        notesFiltered.map((note) => (
           <div key={note._id} className={style["card"]}>
             <div className={style["card_picture_container"]}>
               <img src={note.picture || null} alt={note.title} />
@@ -52,7 +49,7 @@ const NotesCard = ({ onDeleteHandle, categoryColors, notesFetch }) => {
           </div>
         ))
       ) : (
-        <p>Chargement des notes...</p>
+        <p className={style["spinner_message"]}>Loading...</p>
       )}
     </>
   );
