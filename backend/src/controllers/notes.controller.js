@@ -50,6 +50,8 @@ export async function getNoteById(request, response) {
 
     const note = await notesCollection.findOne({ _id: new ObjectId(noteId) });
 
+    const idString = note._id;
+
     if (!note) {
       return response.status(404).json({
         message: "This memo doesn't exist ;(",
@@ -59,6 +61,7 @@ export async function getNoteById(request, response) {
 
     return response.status(200).json({
       success: true,
+      id: idString,
       data: note,
     });
   } catch (error) {
