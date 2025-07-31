@@ -7,6 +7,7 @@ import { nanoid } from "nanoid";
 import { Navigate, Route, Routes } from "react-router";
 import { useNavigate } from "react-router";
 import Footer from "./components/Footer/Footer";
+import NoteCard from "./components/NoteCard/NoteCard";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -63,7 +64,6 @@ function App() {
             element={
               <NotesLayout
                 selectedCategory={selectedCategory}
-                // visibleNotes={visibleNotes}
                 onDeleteHandle={deleteNote}
                 categoryColors={categoryColors}
                 setSelectedCategory={setSelectedCategory}
@@ -72,6 +72,8 @@ function App() {
               />
             }
           />
+
+          <Route path="/notes/:id" element={<NoteCard />} />
 
           <Route
             path="/form"
