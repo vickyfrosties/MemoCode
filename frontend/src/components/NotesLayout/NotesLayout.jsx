@@ -64,7 +64,6 @@ const NotesLayout = ({
           notesFiltered={notesFiltered}
           onDeleteHandle={onDeleteHandle}
           categoryColors={categoryColors}
-          // notesFetch={myNotes}
         />
       </section>
     </>
