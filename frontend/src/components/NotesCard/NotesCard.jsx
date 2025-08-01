@@ -1,11 +1,8 @@
-import { useNavigate, useParams } from "react-router";
+import { Link } from "react-router";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
 const NotesCard = ({ onDeleteHandle, categoryColors, notesFiltered }) => {
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
   return (
     <>
       {notesFiltered.length > 0 ? (
@@ -44,15 +41,16 @@ const NotesCard = ({ onDeleteHandle, categoryColors, notesFiltered }) => {
               </div>
 
               <div className={style["card_content_link"]}>
-                <p>Source:</p>
                 <a href={note.link} target="_blank">
-                  <p>Visit link</p>
+                  <p>Source </p>
                 </a>
 
-                <button value={note._id} onClick={handleClick}>
+                <Link
+                  to={`/notes/${note._id}`}
+                  className={style["card_see_more"]}
+                >
                   Voir la note
-                </button>
-                <p>{note._id} </p>
+                </Link>
               </div>
             </section>
           </div>

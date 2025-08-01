@@ -73,14 +73,24 @@
     padding-left: 5px;
 
     a {
+      text-decoration: none;
       p {
         margin-left: 5px;
       }
 
       &:visited {
-        color: blue;
+        color: black;
       }
     }
+  }
+
+  &_see_more {
+    background-color: #10b962;
+    padding: 3px 5px 3px 5px;
+    border-radius: 3em;
+    text-decoration: none;
+    font-size: 12px;
+    text-align: center;
   }
 
   @include mixins.sm-phone {

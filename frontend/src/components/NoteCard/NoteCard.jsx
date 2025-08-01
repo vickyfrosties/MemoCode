@@ -68,9 +68,8 @@ const NoteCard = () => {
             </div>
 
             <div className={style["card_content_link"]}>
-              <p>Source:</p>
               <a href={memo.link} target="_blank">
-                <p>Visit link</p>
+                <p>Source &#x1F4CE; </p>
               </a>
             </div>
           </section>
