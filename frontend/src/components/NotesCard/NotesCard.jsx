@@ -2,7 +2,13 @@ import { Link } from "react-router";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({ onDeleteHandle, categoryColors, notesFiltered }) => {
+const NotesCard = ({
+  deleteNote,
+  categoryColors,
+  notesFiltered,
+  notes,
+  setNotes,
+}) => {
   return (
     <>
       {notesFiltered.length > 0 ? (
@@ -31,7 +37,12 @@ const NotesCard = ({ onDeleteHandle, categoryColors, notesFiltered }) => {
                   >
                     <p>{note.category} </p>
                   </div>
-                  <DeleteNote onDeleteHandle={onDeleteHandle} id={note._id} />
+                  <DeleteNote
+                    id={note._id}
+                    deleteNote={deleteNote}
+                    notes={notes}
+                    setNotes={setNotes}
+                  />
                 </section>
               </div>
               <div className={style["card_container_content_description"]}>

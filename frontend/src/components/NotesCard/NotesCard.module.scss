@@ -5,6 +5,19 @@
   width: 80vw;
 }
 
+.notes-container {
+  width: 80vw;
+  max-height: 80%;
+  overflow-y: auto;
+  margin: auto;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+}
+
 .card {
   background-color: #d1fae5;
   padding: 15px;

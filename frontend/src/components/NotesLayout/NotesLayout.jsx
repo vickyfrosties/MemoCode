@@ -5,12 +5,14 @@ import AddNoteButton from "../../containers/AddNote/AddNoteButton";
 
 // * Display the notes
 const NotesLayout = ({
-  onDeleteHandle,
+  deleteNote,
   categoryColors,
   setSelectedCategory,
   selectedCategory,
   word,
   setWord,
+  notes,
+  setNotes,
 }) => {
   const [myNotes, setMyNotes] = useState([]);
 
@@ -61,8 +63,10 @@ const NotesLayout = ({
 
       <section className={style["notes-container"]}>
         <NotesCard
+          notes={notes}
+          setNotes={setNotes}
           notesFiltered={notesFiltered}
-          onDeleteHandle={onDeleteHandle}
+          deleteNote={deleteNote}
           categoryColors={categoryColors}
         />
       </section>

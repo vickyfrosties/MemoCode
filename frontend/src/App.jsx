@@ -47,7 +47,7 @@ function App() {
   };
 
   const deleteNote = (idToDelete) => {
-    const noteToDelete = notes.filter((note) => note.id !== idToDelete);
+    const noteToDelete = notes.filter((note) => note._id !== idToDelete);
 
     setNotes(noteToDelete);
   };
@@ -64,11 +64,13 @@ function App() {
             element={
               <NotesLayout
                 selectedCategory={selectedCategory}
-                onDeleteHandle={deleteNote}
+                deleteNote={deleteNote}
                 categoryColors={categoryColors}
                 setSelectedCategory={setSelectedCategory}
                 word={word}
                 setWord={setWord}
+                notes={notes}
+                setNotes={setNotes}
               />
             }
           />
