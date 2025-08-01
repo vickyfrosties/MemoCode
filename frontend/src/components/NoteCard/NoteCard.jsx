@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import style from "../NotesCard/NotesCard.module.scss";
+import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 
 const NoteCard = () => {
   const { id } = useParams();
@@ -25,58 +26,55 @@ const NoteCard = () => {
       })
 
       .catch((error) => {
-        console.log("Erreur de la requête :id", error);
+        console.log("An error occurred:", error);
       });
   }, []);
 
   return (
     <>
-      {memo.length > 0 ? (
-        memo.map((m) => (
-          <div key={m._id} className={style["card"]}>
-            <div className={style["card_picture_container"]}>
-              <img src={m.picture || null} alt={m.title} />
+      {memo.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        <div key={memo._id} className={style["card"]}>
+          <div className={style["card_picture_container"]}>
+            <img src={memo.picture || null} alt={memo.title} />
+          </div>
+
+          <section className={style["card_second_section"]}>
+            <div className={style["card_content"]}>
+              <div className={style["card_content_title"]}>
+                <h3>{memo.title}</h3>
+              </div>
+              <section className={style["card_content_section"]}>
+                <div
+                  style={{
+                    width: "auto",
+                    padding: "0 3px 0 3px",
+                    height: "15px",
+                    borderRadius: "1em",
+                    marginTop: "1ch",
+                    marginLeft: "1ch",
+                  }}
+                >
+                  <p>{memo.category} </p>
+                </div>
+                <DeleteNote />
+              </section>
+            </div>
+            <div className={style["card_container_content_description"]}>
+              <p className={style["card_content_description"]}>
+                {memo.description}
+              </p>
             </div>
 
-            <section className={style["card_second_section"]}>
-              <div className={style["card_content"]}>
-                <div className={style["card_content_title"]}>
-                  <h3>{m.title}</h3>
-                </div>
-                <section className={style["card_content_section"]}>
-                  <div
-                    style={{
-                      //   background: `${categoryColors[note.category]}`,
-                      background: "red",
-                      width: "auto",
-                      padding: "0 3px 0 3px",
-                      height: "15px",
-                      borderRadius: "1em",
-                      marginTop: "1ch",
-                      marginLeft: "1ch",
-                    }}
-                  >
-                    <p>{m.category} </p>
-                  </div>
-                </section>
-              </div>
-              <div className={style["card_container_content_description"]}>
-                <p className={style["card_content_description"]}>
-                  {m.description}
-                </p>
-              </div>
-
-              <div className={style["card_content_link"]}>
-                <p>Source:</p>
-                <a href={m.link} target="_blank">
-                  <p>Visit link</p>
-                </a>
-              </div>
-            </section>
-          </div>
-        ))
-      ) : (
-        <p className={style["spinner_message"]}>Loading memo...</p>
+            <div className={style["card_content_link"]}>
+              <p>Source:</p>
+              <a href={memo.link} target="_blank">
+                <p>Visit link</p>
+              </a>
+            </div>
+          </section>
+        </div>
       )}
     </>
   );
