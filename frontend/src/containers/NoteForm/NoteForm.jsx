@@ -1,7 +1,9 @@
-import { useEffect } from "react";
 import style from "./NoteForm.module.scss";
+import { useNavigate } from "react-router";
 
-const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
+const NoteForm = ({ data, setFormData }) => {
+  const navigate = useNavigate();
+
   async function createNote() {
     fetch(
       "http://localhost:8000/form",
@@ -18,7 +20,6 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
         if (!response.ok) {
           return Promise.reject(response);
         }
-        alert("Form has been submitted !");
       })
       .catch((error) => {
         console.log("Erreur de la requête:", error);
@@ -37,8 +38,8 @@ const NoteForm = ({ data, setFormData, onSubmitHandle }) => {
       throw new Error("All inputs are mandatory and must be filled.");
     }
 
-    onSubmitHandle(data);
     createNote();
+    navigate("/notes");
 
     // * Reset data form after submit
     setFormData({

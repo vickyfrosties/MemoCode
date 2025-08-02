@@ -11,8 +11,6 @@ const NotesLayout = ({
   selectedCategory,
   word,
   setWord,
-  notes,
-  setNotes,
 }) => {
   const [myNotes, setMyNotes] = useState([]);
 
@@ -28,6 +26,12 @@ const NotesLayout = ({
 
     return filterSelect && matchWord;
   });
+
+  const handleDelete = async (id) => {
+    await deleteNote(id);
+    //* Update the state and display notes without note which matches id deleted
+    setMyNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+  };
 
   useEffect(() => {
     fetch("http://localhost:8000/notes", {
@@ -63,10 +67,8 @@ const NotesLayout = ({
 
       <section className={style["notes-container"]}>
         <NotesCard
-          notes={notes}
-          setNotes={setNotes}
           notesFiltered={notesFiltered}
-          deleteNote={deleteNote}
+          deleteNote={handleDelete}
           categoryColors={categoryColors}
         />
       </section>
