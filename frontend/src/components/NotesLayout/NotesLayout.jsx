@@ -13,6 +13,7 @@ const NotesLayout = ({
   setWord,
 }) => {
   const [myNotes, setMyNotes] = useState([]);
+  const [error, setError] = useState();
 
   const notesFiltered = myNotes.filter((note) => {
     const filterSelect =
@@ -49,6 +50,11 @@ const NotesLayout = ({
       })
 
       .then((data) => {
+        if (data.error) {
+          setError(data.error);
+          return <h3></h3>;
+        }
+
         setMyNotes(data.data);
       })
       .catch((error) => {
@@ -70,6 +76,7 @@ const NotesLayout = ({
           notesFiltered={notesFiltered}
           deleteNote={handleDelete}
           categoryColors={categoryColors}
+          error={error}
         />
       </section>
     </>

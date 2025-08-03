@@ -12,9 +12,9 @@ export async function getNotes(request, response) {
 
     if (dataArray.length === 0) {
       return response.json({
-        message: "There's no current data stored",
+        error:
+          "There's no current data stored in database, please create a new memo",
       });
-      // throw new Error("There's no current data stored");
     }
 
     return response.status(200).json({
@@ -24,8 +24,8 @@ export async function getNotes(request, response) {
   } catch (error) {
     return response.status(500).json({
       success: false,
-      message: "Network error",
-      error: error.message,
+      error: "Network error",
+      message: error.message,
     });
   } finally {
     await client.close();

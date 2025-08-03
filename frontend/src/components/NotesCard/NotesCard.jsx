@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({ deleteNote, categoryColors, notesFiltered }) => {
+const NotesCard = ({ deleteNote, categoryColors, notesFiltered, error }) => {
   return (
     <>
       {notesFiltered.length > 0 ? (
@@ -56,7 +56,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered }) => {
           </div>
         ))
       ) : (
-        <p className={style["spinner_message"]}>Loading...</p>
+        <h3 className={style["spinner_message"]}> {error} </h3>
       )}
     </>
   );
