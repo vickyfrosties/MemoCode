@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 import style from "./NavBar.module.scss";
 
-const NavBar = () => {
+const NavBar = ({ resetFilters }) => {
   return (
     <>
       <nav className={style["navigation"]}>
-        <Link to="/">
+        <Link to="/" onClick={resetFilters}>
           <h1>MemoCode</h1>
         </Link>
       </nav>

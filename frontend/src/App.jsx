@@ -59,10 +59,15 @@ function App() {
     }
   };
 
+  function resetFilters() {
+    setSelectedCategory("");
+    setWord("");
+  }
+
   return (
     <>
       <section className="main-container">
-        <NavBar />
+        <NavBar resetFilters={resetFilters} />
         <Routes>
           <Route path="/" element={<Navigate to="/notes" />} />
 
