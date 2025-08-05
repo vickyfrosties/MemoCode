@@ -30,7 +30,6 @@ const NotesLayout = ({
   const handleDelete = async (id) => {
     await deleteNote(id);
     //* Update the state and display notes without note which matches id deleted
-
     setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
   };
 

@@ -3,9 +3,7 @@ import "./App.scss";
 import NavBar from "./components/NavBar/NavBar";
 import NotesLayout from "./components/NotesLayout/NotesLayout";
 import NoteForm from "./containers/NoteForm/NoteForm";
-import { nanoid } from "nanoid";
 import { Navigate, Route, Routes } from "react-router";
-import { useNavigate } from "react-router";
 import Footer from "./components/Footer/Footer";
 import NoteCard from "./components/NoteCard/NoteCard";
 
@@ -30,10 +28,6 @@ function App() {
     astronomy: "#C04278",
     gaming: "#C62828",
   };
-
-  // * Create data form array from data form updated
-  // ! Attention, utiliser le ... "spread operator" pour ne pas perdre le tableau original. Push renvoie un number et écrase le tableau de base.
-  // setNotes(notes.push(data.title, data.description, data.picture, data.link));
 
   const deleteNote = async (idToDelete) => {
     try {
