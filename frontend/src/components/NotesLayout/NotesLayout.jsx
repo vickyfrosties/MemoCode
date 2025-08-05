@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import NotesCard from "../NotesCard/NotesCard";
 import style from "./NotesLayout.module.scss";
 import AddNoteButton from "../../containers/AddNote/AddNoteButton";
@@ -11,11 +11,10 @@ const NotesLayout = ({
   selectedCategory,
   word,
   setWord,
+  notes,
+  setNotes,
 }) => {
-  const [myNotes, setMyNotes] = useState([]);
-  const [error, setError] = useState();
-
-  const notesFiltered = myNotes.filter((note) => {
+  const notesFiltered = notes.filter((note) => {
     const filterSelect =
       !selectedCategory ||
       selectedCategory === "all" ||
@@ -31,7 +30,8 @@ const NotesLayout = ({
   const handleDelete = async (id) => {
     await deleteNote(id);
     //* Update the state and display notes without note which matches id deleted
-    setMyNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
+
+    setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
   };
 
   useEffect(() => {
@@ -50,12 +50,7 @@ const NotesLayout = ({
       })
 
       .then((data) => {
-        if (data.error) {
-          setError(data.error);
-          return <h3></h3>;
-        }
-
-        setMyNotes(data.data);
+        setNotes(data.data);
       })
       .catch((error) => {
         throw new Error(error);
@@ -74,9 +69,9 @@ const NotesLayout = ({
       <section className={style["notes-container"]}>
         <NotesCard
           notesFiltered={notesFiltered}
+          notes={notes}
           deleteNote={handleDelete}
           categoryColors={categoryColors}
-          error={error}
         />
       </section>
     </>

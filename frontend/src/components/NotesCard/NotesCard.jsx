@@ -2,14 +2,22 @@ import { Link } from "react-router";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 
-const NotesCard = ({ deleteNote, categoryColors, notesFiltered, error }) => {
+const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
   return (
     <>
-      {notesFiltered.length > 0 ? (
+      {notes.length === 0 ? (
+        <p className={style["spinner_message"]}>
+          There are no memo stored in the database. Please create a new one.
+        </p>
+      ) : notesFiltered.length === 0 ? (
+        <p className={style["spinner_message"]}>
+          There are no memo in this category.
+        </p>
+      ) : (
         notesFiltered.map((note) => (
           <div key={note._id} className={style["card"]}>
             <div className={style["card_picture_container"]}>
-              <img src={note.picture || null} alt={note.title} />
+              <img src={note.picture || "set a picture"} alt={note.title} />
             </div>
 
             <section className={style["card_second_section"]}>
@@ -55,8 +63,6 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, error }) => {
             </section>
           </div>
         ))
-      ) : (
-        <h3 className={style["spinner_message"]}> {error} </h3>
       )}
     </>
   );

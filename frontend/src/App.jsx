@@ -52,8 +52,7 @@ function App() {
         throw new Error("An error occurred while trying delete request");
       }
 
-      const data = await response.json();
-      setNotes(data);
+      await response.json();
     } catch (error) {
       console.error("Error after request attempt :", error);
     }
@@ -81,6 +80,8 @@ function App() {
                 setSelectedCategory={setSelectedCategory}
                 word={word}
                 setWord={setWord}
+                notes={notes}
+                setNotes={setNotes}
               />
             }
           />
