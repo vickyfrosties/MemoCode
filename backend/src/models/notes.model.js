@@ -29,15 +29,3 @@ export const noteSchema = {
     validationAction: "error",
   },
 };
-
-export const checkNoteInputs = (note) => {
-  if (!note.title) {
-    console.log("Title is missing, please enter a valid title.");
-  } else if (!note.description) {
-    console.log("Description is missing, please enter a valid description.");
-  } else if (!note.link) {
-    console.log("Link is missing, please enter a valid link.");
-  } else if (!note.category) {
-    console.log("Category is missing, please enter a valid category.");
-  }
-};
