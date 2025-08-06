@@ -8,7 +8,7 @@
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 50px 100px;
   flex: 1;
 
   &-title {
@@ -25,14 +25,11 @@
   }
 
   @include mixins.phone {
-    background-color: red;
-  }
-
-  @include mixins.sm-phone {
-    background-color: magenta;
-    width: 100%;
-    display: flex;
-    // gap: 5px;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 100%;
+    grid-template-columns: repeat(3, minmax(150px));
+    column-gap: 75px;
   }
 }

@@ -17,7 +17,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
         notesFiltered.map((note) => (
           <div key={note._id} className={style["card"]}>
             <div className={style["card_picture_container"]}>
-              <img src={note.picture || "set a picture"} alt={note.title} />
+              <img src={note.picture || null} alt={note.title} />
             </div>
 
             <section className={style["card_second_section"]}>
@@ -30,14 +30,13 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
                     style={{
                       background: `${categoryColors[note.category]}`,
                       width: "auto",
-                      padding: "0 3px 0 3px",
+                      padding: "0 7px 0 7px",
+                      margin: "0 0 0 7px",
                       height: "15px",
                       borderRadius: "1em",
-                      marginTop: "1ch",
-                      marginLeft: "1ch",
                     }}
                   >
-                    <p>{note.category} </p>
+                    <p>{note.category}</p>
                   </div>
                   <DeleteNote id={note._id} deleteNote={deleteNote} />
                 </section>
@@ -50,7 +49,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
 
               <div className={style["card_content_link"]}>
                 <a href={note.link} target="_blank">
-                  <p>Source </p>
+                  <p>Source &#x1F4CE;</p>
                 </a>
 
                 <Link
