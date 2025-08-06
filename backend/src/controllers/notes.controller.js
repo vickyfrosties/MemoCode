@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId } from "mongodb";
+import { connectDb } from "../config/db.js";
 
 // * - lire les notes,
 export async function getNotes(request, response) {
@@ -89,14 +90,12 @@ export async function createNote(request, response) {
 
   try {
     await client.connect();
-    const notesDb = client.db("memocode");
 
-    const noteCollectionSchema = await notesDb.createCollection("notes");
+    const notesCollection = client.db("memocode").collection("notes");
 
-    if (!newNote) {
-      throw new Error("No notes were catched");
-    }
-    const noteToCreate = await noteCollectionSchema.insertOne(newNote);
+    const noteToCreate = await notesCollection.insertOne(newNote);
+
+    console.log(noteToCreate);
 
     return response
       .status(200)
