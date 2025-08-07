@@ -47,7 +47,7 @@ const NoteForm = ({ data, setFormData }) => {
     }
     if (!data.description) {
       errors.description =
-        "Description is required, please enter a valid description.";
+        "Description is required, please enter a description.";
     }
     if (!data.picture) {
       errors.picture =
@@ -57,7 +57,7 @@ const NoteForm = ({ data, setFormData }) => {
       errors.link = "Link is required, please enter a valid link url.";
     }
     if (!data.category) {
-      errors.category = "Category is required, please select one category.";
+      errors.category = "Category is required, please select a category.";
     }
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -129,6 +129,9 @@ const NoteForm = ({ data, setFormData }) => {
               setFormData({ ...data, description: e.target.value })
             }
           />
+          <p className={style["form_validation_indication"]}>
+            characters up to: 2000 max
+          </p>
           {formErrors.description && (
             <p className={style["form_errors"]}>{formErrors.description}</p>
           )}

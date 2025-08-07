@@ -43,7 +43,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
               </div>
               <div className={style["card_container_content_description"]}>
                 <p className={style["card_content_description"]}>
-                  {note.description}
+                  {`${note.description.substring(0, 250) + "..."}`}
                 </p>
               </div>
 
