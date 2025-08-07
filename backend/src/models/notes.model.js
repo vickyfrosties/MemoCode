@@ -3,7 +3,7 @@ export const noteSchema = {
     $jsonSchema: {
       bsonType: "object",
       title: "New Note Form Object Validation",
-      required: ["title", "description", "category", "link"],
+      required: ["title", "description", "category", "link", "picture"],
       properties: {
         title: {
           bsonType: "string",
@@ -11,8 +11,8 @@ export const noteSchema = {
         },
         description: {
           bsonType: "string",
-          maxLength: 500,
-          description: "The description must contain up to 500 words maximum.",
+          maxLength: 2000,
+          description: "The description must contain up to 2000 words maximum.",
         },
         category: {
           bsonType: "string",
@@ -21,11 +21,13 @@ export const noteSchema = {
         },
         link: {
           bsonType: "string",
-          description: "The url must be a valid url.",
+          description: "The url link must be a valid url.",
+        },
+        picture: {
+          bsonType: "string",
+          description: "The url picture must be a valid url.",
         },
       },
     },
-    validationLevel: "strict",
-    validationAction: "error",
   },
 };

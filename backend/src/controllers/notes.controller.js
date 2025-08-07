@@ -95,16 +95,14 @@ export async function createNote(request, response) {
 
     const noteToCreate = await notesCollection.insertOne(newNote);
 
-    console.log(noteToCreate);
-
     return response
       .status(200)
       .json({ message: "Note added successfully !", success: true });
   } catch (error) {
     response.status(500).json({
-      message: "Network error",
+      message: error.message,
       success: false,
-      error: error.message,
+      error: error,
     });
   } finally {
     await client.close();
