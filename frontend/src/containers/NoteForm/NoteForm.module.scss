@@ -1,6 +1,6 @@
 .form {
   width: 50dvw;
-  min-height: 80dvh;
+  min-height: 100dvh;
   margin: auto;
   margin-top: 2rem;
   display: flex;
@@ -34,6 +34,11 @@
         border: 2px solid lightcoral;
       }
     }
+  }
+
+  &_validation_indication {
+    font-size: 12px;
+    padding-top: 5px;
   }
 
   &_category_select {
@@ -76,5 +81,6 @@
 
   &_errors {
     color: #d62c2c;
+    font-size: 12px;
   }
 }
