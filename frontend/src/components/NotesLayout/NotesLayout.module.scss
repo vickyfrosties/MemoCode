@@ -2,11 +2,10 @@
 
 .notes-container {
   width: 80vw;
-  max-height: 100%;
   overflow-y: auto;
-  margin: auto;
-  margin-top: 2rem;
+  margin: 2rem auto 0 auto;
   display: grid;
+  align-items: stretch;
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 50px 100px;
   flex: 1;

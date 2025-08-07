@@ -30,7 +30,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
                     style={{
                       background: `${categoryColors[note.category]}`,
                       width: "auto",
-                      padding: "0 7px 0 7px",
+                      padding: "0 7px 0 5px",
                       margin: "0 0 0 7px",
                       height: "15px",
                       borderRadius: "1em",

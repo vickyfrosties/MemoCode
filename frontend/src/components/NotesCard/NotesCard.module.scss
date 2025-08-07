@@ -24,7 +24,8 @@
   padding: 15px;
   text-wrap: wrap;
   display: flex;
-  height: 300px;
+  height: 100%;
+  flex: 1;
   position: relative;
 
   @include mixins.sm-phone {
@@ -64,52 +65,43 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
   }
 
   &_content {
     width: 100%;
+    min-height: 100px;
     overflow-x: hidden;
     position: relative;
   }
 
   &_content_title {
-    position: sticky;
-    top: 0;
     background-color: #10b962;
     border: 3px solid #6ee7a9;
     padding: 3px 0 3px 5px;
+    z-index: 1;
   }
 
   &_container_content_description {
+    width: 100%;
     height: 175px;
-    overflow-y: scroll;
-
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #c1bcbc;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &_content_section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: auto;
-
     p {
       font-size: 10px;
     }
   }
 
   &_content_description {
-    padding: 0 0 3px 5px;
+    width: 100%;
+    padding: 0 0 0 5px;
     font-size: 12px;
     overflow-y: scroll;
   }
@@ -150,7 +142,7 @@
   .card {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    // height: 500px;
 
     &_picture_container {
       img {
