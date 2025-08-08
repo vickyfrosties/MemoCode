@@ -39,6 +39,15 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
                     <p>{note.category}</p>
                   </div>
                   <DeleteNote id={note._id} deleteNote={deleteNote} />
+                  <Link to="/form/edit/:id">
+                    <button>
+                      <img
+                        className={style["button-container-img"]}
+                        src="/assets/edit.svg"
+                        alt="Edit note button"
+                      />
+                    </button>
+                  </Link>
                 </section>
               </div>
               <div className={style["card_container_content_description"]}>

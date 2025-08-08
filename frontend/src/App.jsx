@@ -86,6 +86,8 @@ function App() {
             path="/form"
             element={<NoteForm data={formData} setFormData={setFormData} />}
           />
+
+          <Route path="/form/edit/:id" />
         </Routes>
       </section>
 
