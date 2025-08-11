@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { MongoClient, ObjectId, ReturnDocument } from "mongodb";
 import { connectDb } from "../config/db.js";
 
 // * - lire les notes,
@@ -103,6 +103,9 @@ export async function createNote(request, response) {
       message: error.message,
       success: false,
       error: error,
+      description:
+        error.errorResponse.errInfo.details.schemaRulesNotSatisfied[0]
+          .propertiesNotSatisfied[0].description,
     });
   } finally {
     await client.close();
@@ -136,5 +139,33 @@ export async function deleteNote(request, response) {
     });
   } finally {
     await client.close();
+  }
+}
+
+export async function editNote(request, response) {
+  const id = request.params.id;
+
+  try {
+    const db = await connectDb();
+
+    const notesCollection = db.collection("notes");
+
+    const noteEdits = await notesCollection.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      {
+        $set: request.body,
+      },
+      { returnDocument: "after" }
+    );
+
+    return response.status(200).json({
+      message: `Note with id: ${id} has been edited successfully!`,
+      success: true,
+    });
+  } catch (error) {
+    return response.status(500).json({
+      message: "Network Error.",
+      error: error,
+    });
   }
 }

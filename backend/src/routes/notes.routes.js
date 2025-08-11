@@ -4,6 +4,7 @@ import {
   createNote,
   deleteNote,
   getNoteById,
+  editNote,
 } from "../controllers/notes.controller.js";
 const notesRouter = express.Router();
 
@@ -15,5 +16,6 @@ notesRouter.route("/notes/:id").get(getNoteById);
 notesRouter.route("/form").post(createNote);
 // * - supprimer une note spécifique,
 notesRouter.route("/notes/:id").delete(deleteNote);
-
+// * - modifier une note existante
+notesRouter.route("/form/edit/:id").patch(editNote);
 export default notesRouter;

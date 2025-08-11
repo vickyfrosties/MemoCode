@@ -11,7 +11,7 @@ const originServer = process.env.SERVER_PORT || 8000;
 
 let corsOptions = {
   origin: `http://localhost:${originFront}`,
-  methods: ["GET, PUT, POST, DELETE"],
+  methods: ["GET, PUT, POST, DELETE, PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 };
