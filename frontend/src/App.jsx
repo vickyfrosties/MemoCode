@@ -6,6 +6,7 @@ import NoteForm from "./containers/NoteForm/NoteForm";
 import { Navigate, Route, Routes } from "react-router";
 import Footer from "./components/Footer/Footer";
 import NoteCard from "./components/NoteCard/NoteCard";
+import EditForm from "./containers/NoteEditForm/EditForm";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -87,7 +88,7 @@ function App() {
             element={<NoteForm data={formData} setFormData={setFormData} />}
           />
 
-          <Route path="/form/edit/:id" />
+          <Route path="/form/edit/:id" element={<EditForm />} />
         </Routes>
       </section>
 
