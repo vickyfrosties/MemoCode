@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import style from "../NotesCard/NotesCard.module.scss";
+import style from "../NoteCard/NoteCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import EditNote from "../../containers/EditNote/EditNote";
 
@@ -36,15 +36,11 @@ const NoteCard = () => {
 
   return (
     <>
-      <section className={style["notes-container"]}>
+      <section className={style["note-container"]}>
         {memo.length === 0 ? (
           <p>Loading...</p>
         ) : (
           <div key={memo._id} className={style["card"]}>
-            <div className={style["card_picture_container"]}>
-              <img src={memo.picture || null} alt={memo.title} />
-            </div>
-
             <section className={style["card_second_section"]}>
               <div className={style["card_content"]}>
                 <div className={style["card_content_title"]}>
@@ -63,8 +59,6 @@ const NoteCard = () => {
                   >
                     <p>{memo.category} </p>
                   </div>
-                  <DeleteNote />
-                  <EditNote id={id} />
                 </section>
               </div>
               <div className={style["card_container_content_description"]}>
@@ -79,6 +73,13 @@ const NoteCard = () => {
                 </a>
               </div>
             </section>
+            <div className={style["card_picture_container"]}>
+              <img src={memo.picture || null} alt={memo.title} />
+              <div className={style["card_actions"]}>
+                <DeleteNote />
+                <EditNote id={id} />
+              </div>
+            </div>
           </div>
         )}
       </section>

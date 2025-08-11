@@ -1,0 +1,42 @@
+.note-container {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card {
+  width: 80vw;
+  position: absolute;
+  height: 100%;
+  background-color: #d1fae5;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(4, 25%);
+
+  &_picture_container {
+    grid-column: 2/3;
+    grid-row: 1/4;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &_actions {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &_second_section {
+    height: 20%;
+  }
+
+  &_content {
+    align-self: stretch;
+    grid-row: 1/3;
+  }
+}
