@@ -2,33 +2,37 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import style from "../NotesCard/NotesCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
+import EditNote from "../../containers/EditNote/EditNote";
 
 const NoteCard = () => {
   const { id } = useParams();
   const [memo, setMemo] = useState([]);
 
-  useEffect(() => {
-    fetch(`http://localhost:8000/notes/${id}`, {
-      mode: "cors",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          return Promise.reject(response);
-        }
-        return response.json();
+  async function getNoteById(request, response) {
+    useEffect(() => {
+      fetch(`http://localhost:8000/notes/${id}`, {
+        mode: "cors",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then((data) => {
-        setMemo(data.data);
-      })
+        .then((response) => {
+          if (!response.ok) {
+            return Promise.reject(response);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setMemo(data.data);
+        })
 
-      .catch((error) => {
-        console.log("An error occurred:", error);
-      });
-  }, []);
+        .catch((error) => {
+          console.log("An error occurred:", error);
+        });
+    }, []);
+  }
+  getNoteById();
 
   return (
     <>
@@ -60,6 +64,7 @@ const NoteCard = () => {
                     <p>{memo.category} </p>
                   </div>
                   <DeleteNote />
+                  <EditNote id={id} />
                 </section>
               </div>
               <div className={style["card_container_content_description"]}>

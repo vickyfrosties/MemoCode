@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import style from "../NoteForm/NoteForm.module.scss";
 
 const EditForm = () => {
@@ -13,6 +13,7 @@ const EditForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,8 +45,30 @@ const EditForm = () => {
       });
   }, []);
 
+  async function editNote(request, response) {
+    fetch(`http://localhost:8000/form/edit/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dateNote),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(response);
+        }
+        return response.json();
+      })
+
+      .catch((error) => {
+        console.error("Something went wrong", error);
+      });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    editNote();
+    navigate("/notes");
   };
 
   return (
