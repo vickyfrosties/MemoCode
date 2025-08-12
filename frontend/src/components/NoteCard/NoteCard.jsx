@@ -40,42 +40,34 @@ const NoteCard = () => {
         {memo.length === 0 ? (
           <p>Loading...</p>
         ) : (
-          <div key={memo._id} className={style["card"]}>
-            <section className={style["card_second_section"]}>
-              <div className={style["card_content"]}>
-                <div className={style["card_content_title"]}>
+          <div key={memo._id} className={style["card_container"]}>
+            <section className={style["card_info_section"]}>
+              <div className={style["card_info_section_content"]}>
+                <div>
                   <h3>{memo.title}</h3>
                 </div>
-                <section className={style["card_content_section"]}>
-                  <div
-                    style={{
-                      width: "auto",
-                      padding: "0 3px 0 3px",
-                      height: "15px",
-                      borderRadius: "1em",
-                      marginTop: "1ch",
-                      marginLeft: "1ch",
-                    }}
-                  >
-                    <p>{memo.category} </p>
-                  </div>
-                </section>
-              </div>
-              <div className={style["card_container_content_description"]}>
-                <p className={style["card_content_description"]}>
-                  {memo.description}
-                </p>
-              </div>
-
-              <div className={style["card_content_link"]}>
-                <a href={memo.link} target="_blank">
-                  <p>Source &#x1F4CE; </p>
-                </a>
+                <div className={style["card_first_section_info_category"]}>
+                  <p>{memo.category}</p>
+                </div>
               </div>
             </section>
-            <div className={style["card_picture_container"]}>
+
+            <div className={style["card_container_content_description"]}>
+              <p className={style["card_content_description"]}>
+                {memo.description}
+              </p>
+            </div>
+
+            <div className={style["card_container_content_link"]}>
+              <p>Sources for this topic:</p>
+              <a href={memo.link} target="_blank">
+                <p>{memo.link}</p>
+              </a>
+            </div>
+
+            <div className={style["card_container_content_picture"]}>
               <img src={memo.picture || null} alt={memo.title} />
-              <div className={style["card_actions"]}>
+              <div className={style["card_container_actions"]}>
                 <DeleteNote />
                 <EditNote id={id} />
               </div>
