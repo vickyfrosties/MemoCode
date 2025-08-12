@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import style from "../DeleteNote/DeleteNote.module.scss";
 
 const EditNote = ({ id }) => {
   const navigate = useNavigate();
@@ -10,9 +11,15 @@ const EditNote = ({ id }) => {
   };
   return (
     <>
-      <button onClick={handleClick}>
-        <img src="/assets/edit.svg" alt="Edit note button" />
-      </button>
+      <div className={style["button-container"]}>
+        <button onClick={handleClick}>
+          <img
+            className={style["button-container-img"]}
+            src="/assets/edit.svg"
+            alt="Edit note button"
+          />
+        </button>
+      </div>
     </>
   );
 };

@@ -81,7 +81,10 @@ function App() {
             }
           />
 
-          <Route path="/notes/:id" element={<NoteCard />} />
+          <Route
+            path="/notes/:id"
+            element={<NoteCard categoryColors={categoryColors} />}
+          />
 
           <Route
             path="/form"

@@ -4,7 +4,7 @@ import style from "../NoteCard/NoteCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import EditNote from "../../containers/EditNote/EditNote";
 
-const NoteCard = () => {
+const NoteCard = ({ categoryColors }) => {
   const { id } = useParams();
   const [memo, setMemo] = useState([]);
 
@@ -46,7 +46,17 @@ const NoteCard = () => {
                 <div>
                   <h3>{memo.title}</h3>
                 </div>
-                <div className={style["card_first_section_info_category"]}>
+                <div
+                  style={{
+                    background: `${categoryColors[memo.category]}`,
+                    width: "fit-content",
+                    padding: "0 7px 0 7px",
+                    fontSize: "12px",
+                    textAlign: "center",
+                    borderRadius: "1em",
+                  }}
+                  className={["card_first_section_info_category"]}
+                >
                   <p>{memo.category}</p>
                 </div>
               </div>
