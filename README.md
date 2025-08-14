@@ -1,31 +1,40 @@
 # MemoCode
 
-![Static Badge](https://img.shields.io/badge/React.js-62dafb)
-![Static Badge](https://img.shields.io/badge/JavaScript-f7df31)
-![Static Badge](https://img.shields.io/badge/Express.js-black)
-![Static Badge](https://img.shields.io/badge/Node.js-88c743)
-![Static Badge](https://img.shields.io/badge/MongoDB-519747)
+![Static Badge](https://img.shields.io/badge/react-grey?style=for-the-badge&logo=react)
+![Static Badge](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+![Static Badge](https://img.shields.io/badge/express-white?style=for-the-badge&logo=express&logoColor=black)
+![Static Badge](https://img.shields.io/badge/node.js-5FA04E?style=for-the-badge&logo=node.js&logoColor=white)
+![Static Badge](https://img.shields.io/badge/mongodb-56a94c?style=for-the-badge&logo=mongodb&logoColor=white)
+![Static Badge](https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 
-MemoCode is a full-stack web application built with React, Express, Node and MongoDB. It allows you to create notes, read them, edit and even delete them if you're no longer interested in it. It uses a clean and responsive interface.
+## ! Important note
 
-## Table of contents
+This project is still in development mode. The only way to use it is to run it locally. Make sure to follow all the steps to make it work.
+
+## Table of Contents
 
 - [MemoCode](#memocode)
-  - [Table of contents](#table-of-contents)
+  - [! Important note](#-important-note)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
     - [Purpose](#purpose)
-  - [Technologies stack](#technologies-stack)
-  - [Clone the project](#clone-the-project)
+    - [Technologies stack](#technologies-stack)
   - [Installation](#installation)
-    - [Dependencies](#dependencies)
+    - [Clone the repository](#clone-the-repository)
+    - [Install dependencies](#install-dependencies)
   - [Usage](#usage)
     - [Client](#client)
     - [Server](#server)
 
+## Introduction
+
+MemoCode is a full-stack web application built with React, Express, Node and MongoDB. It allows you to create notes, read, edit and delete them as long as you like. It uses a clean and responsive interface.
+
 ### Purpose
 
-This project's goal is all about **learning concepts** from the IT industry and have a unique space to store the core information and get an **easy and efficient** user interface. As I usually read blogs and documentations, it gets really difficult to keep track of all the information into folders using bookmarks.
+The project first goal is to have a unique space to store and get an **easy access** at all the IT industry concepts that I learn from. As I read blogs and documentations, it gets really difficult to keep track of all the information into folders using bookmarks.
 
-## Technologies stack
+### Technologies stack
 
 This project implements full **CRUD** functionality - **_CREATE_**, **_READ_**, **_UPDATE_** and **_DELETE_** via RESTful API endpoints.
 
@@ -39,7 +48,9 @@ The following stacks are those that have been used in the project:
 | SCSS/SASS  | Nodemon  | -------------- |
 ```
 
-## Clone the project
+## Installation
+
+### Clone the repository
 
 To get the project on your local device, run this command in your terminal:
 
@@ -47,7 +58,7 @@ To get the project on your local device, run this command in your terminal:
 git clone https://github.com/vickyfrosties/MemoCode.git
 ```
 
-Then open the project in your editor and run those commands in separate terminals:
+Then open the project in your editor and run those commands in **separate** terminals:
 
 - Navigate to the client folder
 
@@ -61,9 +72,7 @@ cd MemoCode/frontend/
 cd MemoCode/backend/
 ```
 
-## Installation
-
-### Dependencies
+### Install dependencies
 
 Now, to install all the dependencies, you have to install the package manager (**_node_modules_**) on each folder. Also, make sure you are in the correct directory.
 
