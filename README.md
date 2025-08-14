@@ -32,7 +32,7 @@ MemoCode is a full-stack web application built with React, Express, Node and Mon
 
 ### Purpose
 
-The project first goal is to have a unique space to store and get an **easy access** at all the IT industry concepts that I learn from. As I read blogs and documentations, it gets really difficult to keep track of all the information into folders using bookmarks.
+This project goal is to have a unique centralized space and get an **easy access** at all the keys resources and concepts from the web development industry that I learn. As I read blogs, articles and documentations, it gets really challenging to keep track of all the information. This project is my tool solution to solve this problem.
 
 ### Technologies stack
 
