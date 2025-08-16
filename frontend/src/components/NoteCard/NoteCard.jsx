@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import style from "../NoteCard/NoteCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import EditNote from "../../containers/EditNote/EditNote";
@@ -36,6 +36,16 @@ const NoteCard = ({ categoryColors }) => {
 
   return (
     <>
+      <Link to="/notes">
+        <div className={style["arrow-container"]}>
+          <div className={style["arrow-container-svg-container"]}>
+            <img src="/assets/arrow-left.svg" alt="Back to home page" />
+          </div>
+          <div className={style["arrow-container-description-container"]}>
+            <p>Go back to home page</p>
+          </div>
+        </div>
+      </Link>
       <section className={style["note-container"]}>
         {memo.length === 0 ? (
           <p>Loading...</p>

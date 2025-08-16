@@ -1,5 +1,35 @@
 @use "/src/variables";
 
+.arrow-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  &-svg-container {
+    padding: 0 15px 0 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &-description-container:hover {
+    p {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
+a,
+a:visited {
+  color: black;
+  text-decoration: none;
+}
 .note-container {
   height: 70vh;
   display: flex;
