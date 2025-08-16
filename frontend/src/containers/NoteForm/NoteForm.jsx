@@ -1,6 +1,7 @@
 import { useState } from "react";
 import style from "./NoteForm.module.scss";
 import { useNavigate } from "react-router";
+import BackTo from "../../components/BackTo/BackTo";
 
 const NoteForm = ({ data, setFormData }) => {
   const navigate = useNavigate();
@@ -81,6 +82,8 @@ const NoteForm = ({ data, setFormData }) => {
 
   return (
     <>
+      <BackTo setFormData={setFormData} />
+
       <form className={style["form"]} onSubmit={handleSubmit} id="note-form">
         <label className={style["form_title_input"]}>
           Title:
