@@ -8,7 +8,6 @@ const WordFilter = ({ setWord, word }) => {
         <input
           type="text"
           placeholder="e.g. 'testing'"
-          value={word}
           onChange={(e) => setWord(e.target.value)}
         />
       </div>
