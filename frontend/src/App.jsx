@@ -58,6 +58,16 @@ function App() {
     setWord("");
   }
 
+  function resetDataForm() {
+    setFormData({
+      title: "",
+      description: "",
+      picture: "",
+      link: "",
+      category: "",
+    });
+  }
+
   return (
     <>
       <section className="main-container">
@@ -88,7 +98,13 @@ function App() {
 
           <Route
             path="/form"
-            element={<NoteForm data={formData} setFormData={setFormData} />}
+            element={
+              <NoteForm
+                data={formData}
+                setFormData={setFormData}
+                resetDataForm={resetDataForm}
+              />
+            }
           />
 
           <Route path="/form/edit/:id" element={<EditForm />} />

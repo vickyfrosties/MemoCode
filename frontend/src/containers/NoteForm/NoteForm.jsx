@@ -3,7 +3,7 @@ import style from "./NoteForm.module.scss";
 import { useNavigate } from "react-router";
 import BackTo from "../../components/BackTo/BackTo";
 
-const NoteForm = ({ data, setFormData }) => {
+const NoteForm = ({ data, setFormData, resetDataForm }) => {
   const navigate = useNavigate();
   // * Handle errors messages
   const [formErrors, setFormErrors] = useState({
@@ -69,20 +69,14 @@ const NoteForm = ({ data, setFormData }) => {
     createNote();
     navigate("/notes");
 
-    setFormData({
-      title: "",
-      description: "",
-      picture: "",
-      link: "",
-      category: "",
-    });
+    resetDataForm();
 
     setFormErrors({});
   };
 
   return (
     <>
-      <BackTo setFormData={setFormData} />
+      <BackTo resetDataForm={resetDataForm} />
 
       <form className={style["form"]} onSubmit={handleSubmit} id="note-form">
         <label className={style["form_title_input"]}>
