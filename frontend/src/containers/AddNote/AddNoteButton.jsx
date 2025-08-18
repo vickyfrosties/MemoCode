@@ -3,6 +3,7 @@ import style from "./AddNoteButton.module.scss";
 import SelectFilter from "../SelectFilter/SelectFilter";
 import { useLocation } from "react-router";
 import WordFilter from "../WordFilter/WordFilter";
+import FiltersBtn from "../FiltersBtn.jsx/FiltersBtn";
 
 //* Open the "New note form" when clicked
 const AddNoteButton = ({
@@ -15,6 +16,7 @@ const AddNoteButton = ({
   return (
     <>
       <section className={style["container"]}>
+        <FiltersBtn />
         <section className={style["container_filter_section"]}>
           {location.pathname === "/notes" && (
             <WordFilter
