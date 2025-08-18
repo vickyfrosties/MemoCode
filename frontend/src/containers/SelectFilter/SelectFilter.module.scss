@@ -4,8 +4,9 @@
   &_filter {
     // width: 60%;
     display: flex;
-    justify-content: end;
-    align-items: center;
+    // justify-content: end;
+    justify-content: space-between;
+    // align-items: center;
 
     p {
       margin-right: 1em;
@@ -16,14 +17,26 @@
       padding: 0.5ch;
     }
   }
-}
 
-@media (max-width: 800px) {
-  .container {
+  @include mixins.md-sizes {
     &_filter {
-      justify-content: start;
+      display: none;
+    }
+  }
 
-      width: 100%;
+  @include mixins.tablet {
+    &_filter {
+      display: none;
     }
   }
 }
+
+// @media (max-width: 800px) {
+//   .container {
+//     &_filter {
+//       justify-content: start;
+
+//       width: 100%;
+//     }
+//   }
+// }

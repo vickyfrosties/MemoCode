@@ -2,10 +2,11 @@
 
 .word-filter-container {
   display: flex;
-  align-items: center;
+  // align-items: center;
+  justify-content: space-between;
 
   p {
-    margin-right: 1em;
+    // margin-right: 1em;
   }
 
   input {
@@ -13,16 +14,20 @@
     width: 50%;
   }
 
-  @include mixins.sm-phone {
-    input {
-      width: 100%;
-      padding: 5px;
-    }
+  @include mixins.md-sizes {
+    display: none;
   }
-}
 
-@media (max-width: 800px) {
-  .word-filter-container {
-    width: 100%;
+  @include mixins.tablet {
+    display: none;
+
+    border: 2px solid teal;
   }
+
+  // @include mixins.sm-phone {
+  //   input {
+  //     width: 100%;
+  //     padding: 5px;
+  //   }
+  // }
 }

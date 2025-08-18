@@ -9,27 +9,18 @@
   align-items: center;
 
   @include mixins.sm-phone {
-    height: 120px;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+    width: 90%;
+    margin: auto;
   }
 
   &_filter_section {
     width: 55%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-
-    @include mixins.sm-phone {
-      p {
-        display: none;
-      }
-    }
   }
 
   &_button_form {
-    // width: 50%;
     display: flex;
     justify-content: end;
   }
@@ -48,24 +39,6 @@
 
     &:hover {
       opacity: 0.8;
-    }
-  }
-}
-
-@media (max-width: 800px) {
-  .container {
-    &_filter_section {
-      flex-direction: column;
-      justify-content: space-between;
-      height: 65px;
-    }
-  }
-}
-
-@media (max-width: 1180px) {
-  .container {
-    &_filter_section {
-      width: 70%;
     }
   }
 }
