@@ -15,7 +15,7 @@
     margin: auto;
     margin-bottom: 1.5rem;
 
-    @include mixins.sm-phone {
+    @include mixins.phone {
       font-size: 1.3em;
     }
   }

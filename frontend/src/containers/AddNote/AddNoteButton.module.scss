@@ -1,10 +1,10 @@
 @use "/src/mixins";
+@use "/src/variables";
 
 .container {
   display: flex;
+  width: 90%;
   margin: auto;
-  margin-top: 0;
-  width: 100%;
   justify-content: space-around;
   align-items: center;
 
@@ -28,10 +28,15 @@
   &_button {
     width: 7rem;
     height: 2.4rem;
-    background-color: oklch(0.546 0.245 262.881);
+    background-color: variables.$button;
     border: none;
+    border-radius: 0.5ch;
     color: white;
     cursor: pointer;
+
+    @include mixins.sm-phone {
+      font-size: 12px;
+    }
 
     &:active {
       border: 2px solid lightcoral;

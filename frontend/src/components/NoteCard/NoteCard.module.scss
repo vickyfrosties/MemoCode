@@ -39,7 +39,7 @@ a:visited {
 
 .card_container {
   width: 80vw;
-  background-color: variables.$primary-color;
+  background-color: variables.$light-blue;
   padding: 1em;
   display: grid;
   height: 100%;
@@ -96,8 +96,7 @@ a:visited {
 
 .card_info_section {
   &_content {
-    background-color: variables.$secondary-color;
-    border: 3px solid variables.$tertiary-color;
+    background-color: variables.$light;
     padding: 1em 7px 1em 7px;
   }
 

@@ -1,3 +1,6 @@
+@use "/src/mixins";
+@use "/src/variables";
+
 .button-container {
   display: flex;
   justify-content: end;
@@ -7,6 +10,20 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background-color: variables.$button;
+    border: none;
+    width: 2.5rem;
+    height: 26px;
+    border-radius: 0.5ch;
+
+    @include mixins.phone {
+      width: 4rem;
+      height: 26px;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
 
   &-img {

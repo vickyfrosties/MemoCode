@@ -1,3 +1,5 @@
+@use "/src/variables";
+
 .navigation {
   height: 5rem;
   width: auto;
@@ -12,7 +14,9 @@
   }
 
   h1 {
-    background-color: rgb(248, 147, 147);
+    background-color: #ee4266;
+    color: white;
+
     padding: 0 2rem 0 2rem;
     border-radius: 20px;
   }

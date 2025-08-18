@@ -31,6 +31,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
                     style={{
                       background: `${categoryColors[note.category]}`,
                       width: "auto",
+                      color: "white",
                       padding: "0 7px 0 5px",
                       margin: "0 0 0 7px",
                       height: "15px",
@@ -58,7 +59,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
                   to={`/notes/${note._id}`}
                   className={style["card_see_more"]}
                 >
-                  Voir la note
+                  <p>Voir la note</p>
                 </Link>
               </div>
             </section>

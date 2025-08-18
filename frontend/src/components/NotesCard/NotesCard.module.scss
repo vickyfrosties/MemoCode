@@ -21,7 +21,7 @@
 }
 
 .card {
-  background-color: variables.$primary-color;
+  background-color: variables.$light-blue;
   padding: 15px;
   text-wrap: wrap;
   display: flex;
@@ -30,7 +30,6 @@
   position: relative;
 
   @include mixins.md-sizes {
-    background-color: #c1d3fe;
     flex-direction: column;
     width: 100%;
   }
@@ -89,8 +88,7 @@
   }
 
   &_content_title {
-    background-color: variables.$secondary-color;
-    border: 3px solid variables.$tertiary-color;
+    background-color: variables.$light;
     padding: 3px 0 3px 5px;
     z-index: 1;
   }
@@ -111,6 +109,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
+
     p {
       font-size: 10px;
     }
@@ -130,20 +130,41 @@
     justify-content: space-between;
 
     a {
-      color: black;
+      background-color: variables.$button;
+      padding: 0 7px 0 7px;
+      border-radius: 0.5ch;
       text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       p {
         margin-left: 5px;
+        color: white;
+        font-size: 12px;
+      }
+
+      &:hover {
+        opacity: 0.85;
       }
     }
   }
 
   &_see_more {
-    background-color: variables.$secondary-color;
-    padding: 3px 5px 3px 5px;
-    border-radius: 3em;
+    background-color: variables.$button;
+    border-radius: 0.5ch;
     text-decoration: none;
     font-size: 12px;
     text-align: center;
+    padding: 0 4px 0 4px;
+
+    p {
+      color: white;
+      padding: 3px 3px 3px 0;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
   }
 }
