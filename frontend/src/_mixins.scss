@@ -1,19 +1,37 @@
 @use "./breakpoints";
 
 @mixin sm-phone {
-  @media (max-width: breakpoints.$phone) {
+  @media only screen and (max-width: breakpoints.$sm-phone) {
     @content;
   }
 }
 
 @mixin phone {
-  @media (min-width: breakpoints.$phone) and (max-width: breakpoints.$tablet) {
+  @media only screen and (max-width: breakpoints.$phone) {
+    @content;
+  }
+}
+
+@mixin md-sizes {
+  @media only screen and (max-width: breakpoints.$md-tablet) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (max-width: breakpoints.$tablet) {
+  @media only screen and (min-width: breakpoints.$md-tablet) and (max-width: breakpoints.$lg-tablet) {
+    @content;
+  }
+}
+
+@mixin medium-to-large {
+  @media only screen and (min-width: breakpoints.$md-lg) {
+    @content;
+  }
+}
+
+@mixin tb-to-lg {
+  @media only screen and (min-width: breakpoints.$lg-tablet) {
     @content;
   }
 }
