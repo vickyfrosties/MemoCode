@@ -1,3 +1,5 @@
+@use "/src/variables";
+
 .form {
   width: 50dvw;
   min-height: 100dvh;
@@ -23,29 +25,12 @@
     flex-direction: column;
   }
 
-  &_title_input {
-    // padding: 5px;
-
-    input {
-      // width: 50%;
-      // padding: 5px;
-
-      &:focus {
-        border: 2px solid lightcoral;
-      }
-    }
-  }
-
   &_validation_indication {
     font-size: 12px;
     padding-top: 5px;
   }
 
   &_category_select {
-    // width: 7rem;
-
-    // align-items: center;
-
     select {
       width: 200px;
       padding: 0.8ch;
@@ -69,10 +54,6 @@
     color: white;
     border: none;
     text-align: center;
-
-    &:active {
-      border: 2px solid lightcoral;
-    }
 
     &:hover {
       opacity: 0.8;

@@ -16,10 +16,17 @@ body,
 }
 
 .main-container {
-  // background-color: #f5ebe0;
-
   padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  input,
+  textarea,
+  button,
+  select {
+    &:focus {
+      border: 3px solid #ee4266;
+    }
+  }
 }

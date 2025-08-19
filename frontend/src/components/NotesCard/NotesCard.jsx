@@ -52,7 +52,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
 
               <div className={style["card_content_link"]}>
                 <a href={note.link} target="_blank">
-                  <p>Source &#x1F4CE;</p>
+                  <p>Source</p>
                 </a>
 
                 <Link
