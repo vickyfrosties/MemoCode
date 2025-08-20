@@ -1,12 +1,178 @@
-import { MongoClient, ObjectId, ReturnDocument } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 import { connectDb } from "../config/db.js";
 
+// ! Demo Notes
+export async function getDemoNotes(request, response) {
+  const client = new MongoClient(process.env.ATLAS_URI);
+
+  try {
+    const db = await connectDb();
+
+    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+    const demoNotes = await demoCollection.find().toArray();
+
+    if (demoNotes.length === 0) {
+      return response.json({
+        error:
+          "There's no current data stored in database, please create a new memo",
+      });
+    }
+    return response.json({
+      status: response.status,
+      data: demoNotes,
+    });
+  } catch (error) {
+    return response.status(500).json({
+      message: "Note cannot be added",
+      error: error.message,
+      success: false,
+    });
+  }
+}
+
+export async function getDemoNoteById(request, response) {
+  const id = request.params.id;
+  if (!ObjectId.isValid(id)) {
+    return response.status(400).json({
+      message: "Invalid ID format",
+      success: false,
+    });
+
+    const client = new MongoClient(process.env.ATLAS_URI);
+  }
+  try {
+    const db = await connectDb();
+    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+
+    const demoNoteId = await demoCollection.findOne({ _id: new ObjectId(id) });
+
+    const idString = demoNoteId._id;
+    if (!demoNoteId) {
+      return response.status(404).json({
+        message: "This memo doesn't exist ;(",
+        success: false,
+      });
+    }
+
+    return response.status(200).json({
+      success: true,
+      id: idString,
+      data: demoNoteId,
+    });
+  } catch (error) {
+    return response.status(500).json({
+      message: "Note by id cannot be choose",
+      id: id,
+      error: error.message,
+      success: false,
+    });
+  }
+}
+
+export async function createDemoNote(request, response) {
+  const newDemoNote = {
+    title: request.body.title,
+    description: request.body.description,
+    picture: request.body.picture,
+    link: request.body.link,
+    category: request.body.category,
+  };
+  const client = new MongoClient(process.env.ATLAS_URI);
+
+  try {
+    const db = await connectDb();
+
+    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+
+    const demoNoteToCreate = await demoCollection.insertOne(newDemoNote);
+
+    return response
+      .status(200)
+      .json({ message: "Note added successfully !", success: true });
+  } catch (error) {
+    response.status(500).json({
+      message: error.message,
+      success: false,
+      error: error,
+      description:
+        error.errorResponse.errInfo.details.schemaRulesNotSatisfied[0]
+          .propertiesNotSatisfied[0].description,
+    });
+  } finally {
+    await client.close();
+  }
+}
+
+export async function deleteDemoNote(request, response) {
+  // * Retrieve id from request params
+  const id = request.params.id;
+  const client = new MongoClient(process.env.ATLAS_URI);
+
+  try {
+    const db = await connectDb();
+    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+
+    // * Convert id to match MongoDB ObjectId format and delete it
+    if (!ObjectId.isValid) {
+      throw new Error("ObjectId format is not valid, id must be a string");
+    }
+    const noteToDelete = await demoCollection.deleteOne({
+      _id: new ObjectId(id),
+    });
+
+    return response.status(200).json({
+      message: `Note with id: ${id} has been deleted successfully!`,
+      success: true,
+    });
+  } catch (error) {
+    return response.status(500).json({
+      message: "Network error",
+      success: false,
+      error: error.message,
+    });
+  } finally {
+    await client.close();
+  }
+}
+
+export async function editDemoNote(request, response) {
+  const id = request.params.id;
+  const client = new MongoClient(process.env.ATLAS_URI);
+
+  try {
+    const db = await connectDb();
+
+    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+
+    const noteEdits = await demoCollection.findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      {
+        $set: request.body,
+      },
+      { returnDocument: "after" }
+    );
+
+    return response.status(200).json({
+      message: `Note with id: ${id} has been edited successfully!`,
+      success: true,
+    });
+  } catch (error) {
+    return response.status(500).json({
+      message: "Network Error.",
+      error: error,
+    });
+  }
+}
+
+// ! Personal Notes
 // * - lire les notes,
 export async function getNotes(request, response) {
   const client = new MongoClient(process.env.ATLAS_URI);
   try {
     const dbConnection = client.db("memocode");
-    const notesCollection = dbConnection.collection("notes");
+    const notesCollection = dbConnection.collection(
+      process.env.MONGO_COLLECTION
+    );
 
     const dataResult = notesCollection.find();
     const dataArray = await dataResult.toArray();
@@ -47,7 +213,9 @@ export async function getNoteById(request, response) {
   const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
-    const notesCollection = client.db("memocode").collection("notes");
+    const notesCollection = client
+      .db("memocode")
+      .collection(process.env.MONGO_COLLECTION);
 
     const note = await notesCollection.findOne({ _id: new ObjectId(noteId) });
 
@@ -91,7 +259,9 @@ export async function createNote(request, response) {
   try {
     await client.connect();
 
-    const notesCollection = client.db("memocode").collection("notes");
+    const notesCollection = client
+      .db("memocode")
+      .collection(process.env.MONGO_COLLECTION);
 
     const noteToCreate = await notesCollection.insertOne(newNote);
 
@@ -120,7 +290,9 @@ export async function deleteNote(request, response) {
   const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
-    const noteColl = client.db("memocode").collection("notes");
+    const noteColl = client
+      .db("memocode")
+      .collection(process.env.MONGO_COLLECTION);
     // * Convert id to match MongoDB ObjectId format and delete it
     if (!ObjectId.isValid) {
       throw new Error("ObjectId format is not valid, id must be a string");
@@ -148,7 +320,7 @@ export async function editNote(request, response) {
   try {
     const db = await connectDb();
 
-    const notesCollection = db.collection("notes");
+    const notesCollection = db.collection(process.env.MONGO_COLLECTION);
 
     const noteEdits = await notesCollection.findOneAndUpdate(
       { _id: new ObjectId(id) },
