@@ -22,6 +22,10 @@
     font-size: 18px;
   }
 
+  @include mixins.up-to-mdtablet {
+    min-height: 80vh;
+  }
+
   .form {
     width: 60dvw;
     min-height: 50vh;
@@ -38,6 +42,11 @@
       flex-direction: row;
       width: 80%;
       min-height: 50%;
+    }
+
+    @include mixins.up-to-mdtablet {
+      width: 80%;
+      height: 100%;
     }
 
     input:not([type="submit"]) {
@@ -60,6 +69,24 @@
           display: flex;
           flex-direction: column;
           justify-content: space-evenly;
+        }
+
+        label:has(textarea) {
+          height: auto;
+        }
+      }
+
+      @include mixins.up-to-mdtablet {
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        > label {
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
         }
 
         label:has(textarea) {
@@ -95,6 +122,24 @@
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
+          }
+        }
+      }
+
+      @include mixins.up-to-mdtablet {
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 14rem;
+
+        &_block {
+          height: auto;
+
+          > label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
           }
         }
       }

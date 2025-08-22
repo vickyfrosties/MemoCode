@@ -21,7 +21,7 @@ const BackTo = ({ resetDataForm }) => {
             <img src="/assets/arrow-left.svg" alt="Back to home page" />
           </a>
           <div className={style["arrow-container-description-container"]}>
-            <p>Go back to home page</p>
+            <p>Back to homepage</p>
           </div>
         </div>
       </div>

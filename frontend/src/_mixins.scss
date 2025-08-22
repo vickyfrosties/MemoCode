@@ -35,3 +35,9 @@
     @content;
   }
 }
+
+@mixin up-to-mdtablet {
+  @media only screen and (min-width: breakpoints.$md-tablet) {
+    @content;
+  }
+}
