@@ -1,3 +1,4 @@
+@use "/src/mixins";
 @use "/src/variables";
 
 .arrow-container {
@@ -32,10 +33,15 @@ a:visited {
 }
 
 .note-container {
+  margin-top: 2rem;
   height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include mixins.md-sizes {
+    height: 100%;
+  }
 }
 
 .card_container {
@@ -49,12 +55,23 @@ a:visited {
   column-gap: 1em;
   row-gap: 1em;
 
+  @include mixins.md-sizes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
   &_content_description {
     grid-row: 2/5;
     font-size: 1.5ch;
     background-color: whitesmoke;
     padding: 1ch;
-    overflow-x: scroll;
+
+    @include mixins.up-larger {
+      overflow-y: auto;
+      padding: 2ch;
+      grid-auto-rows: max-content;
+    }
   }
 
   &_content_link {
@@ -64,39 +81,47 @@ a:visited {
     grid-column: 2/3;
 
     a {
+      color: blue;
+
       p {
         font-size: 1.5ch;
       }
     }
-    :visited {
-      color: blue;
-    }
   }
 
   &_content_picture {
-    border: 1px solid black;
     grid-row: 1/3;
     grid-column: 2/3;
     position: relative;
     width: 100%;
+    height: 100%;
+    display: flex;
+    align-self: baseline;
 
     img {
-      object-fit: fill;
+      object-fit: cover;
       width: 100%;
       height: 100%;
+    }
+
+    @include mixins.md-sizes {
+      width: 100%;
+      height: 50%;
     }
   }
 
   &_actions {
     width: 30%;
-    grid-row: -3/4;
+    grid-row: 3/4;
     display: flex;
     justify-content: space-evenly;
   }
 }
 
 .card_info_section {
+  order: 1;
   &_content {
+    height: 110px;
     background-color: variables.$light;
     padding: 1em 7px 1em 7px;
   }

@@ -45,7 +45,7 @@ const EditForm = () => {
       });
   }, []);
 
-  async function editNote(request, response) {
+  async function editNote() {
     fetch(`http://localhost:8000/form/edit/${id}`, {
       method: "PATCH",
       headers: {

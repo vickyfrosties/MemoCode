@@ -3,12 +3,13 @@ import { Link, useParams } from "react-router";
 import style from "../NoteCard/NoteCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import EditNote from "../../containers/EditNote/EditNote";
+import BackTo from "../BackTo/BackTo";
 
 const NoteCard = ({ categoryColors }) => {
   const { id } = useParams();
   const [memo, setMemo] = useState([]);
 
-  async function getNoteById(request, response) {
+  async function getNoteById() {
     useEffect(() => {
       fetch(`http://localhost:8000/notes/${id}`, {
         mode: "cors",
@@ -36,41 +37,31 @@ const NoteCard = ({ categoryColors }) => {
 
   return (
     <>
-      <Link to="/notes">
-        <div className={style["arrow-container"]}>
-          <div className={style["arrow-container-svg-container"]}>
-            <img src="/assets/arrow-left.svg" alt="Back to home page" />
-          </div>
-          <div className={style["arrow-container-description-container"]}>
-            <p>Go back to home page</p>
-          </div>
-        </div>
-      </Link>
+      <BackTo />
+
       <section className={style["note-container"]}>
         {memo.length === 0 ? (
           <p>Loading...</p>
         ) : (
           <div key={memo._id} className={style["card_container"]}>
-            <section className={style["card_info_section"]}>
-              <div className={style["card_info_section_content"]}>
-                <div>
-                  <h3>{memo.title}</h3>
-                </div>
-                <div
-                  style={{
-                    background: `${categoryColors[memo.category]}`,
-                    width: "fit-content",
-                    padding: "0 7px 0 7px",
-                    fontSize: "12px",
-                    textAlign: "center",
-                    borderRadius: "1em",
-                  }}
-                  className={["card_first_section_info_category"]}
-                >
-                  <p>{memo.category}</p>
-                </div>
+            <div className={style["card_info_section_content"]}>
+              <div>
+                <h3>{memo.title}</h3>
               </div>
-            </section>
+              <div
+                style={{
+                  background: `${categoryColors[memo.category]}`,
+                  width: "fit-content",
+                  padding: "0 7px 0 7px",
+                  fontSize: "12px",
+                  textAlign: "center",
+                  borderRadius: "1em",
+                }}
+                className={["card_first_section_info_category"]}
+              >
+                <p>{memo.category}</p>
+              </div>
+            </div>
 
             <div className={style["card_container_content_description"]}>
               <p className={style["card_content_description"]}>
@@ -87,10 +78,10 @@ const NoteCard = ({ categoryColors }) => {
 
             <div className={style["card_container_content_picture"]}>
               <img src={memo.picture || null} alt={memo.title} />
-              <div className={style["card_container_actions"]}>
-                <DeleteNote />
-                <EditNote id={id} />
-              </div>
+            </div>
+            <div className={style["card_container_actions"]}>
+              <DeleteNote />
+              <EditNote id={id} />
             </div>
           </div>
         )}
