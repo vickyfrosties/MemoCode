@@ -1,9 +1,17 @@
+@use "/src/mixins";
+
 .arrow-container {
   display: flex;
   align-items: center;
 
+  &-bis {
+    width: 80%;
+    display: flex;
+    margin: auto;
+  }
+
   &-svg-container {
-    padding: 0 15px 0 15px;
+    padding: 0 15px 0 0;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -11,13 +19,25 @@
     img {
       width: 20px;
       height: 20px;
+
+      @include mixins.md-sizes {
+        width: 32px;
+        height: 32px;
+      }
     }
   }
 
-  &-description-container:hover {
-    p {
-      text-decoration: underline;
-      cursor: pointer;
+  &-description-container {
+    @include mixins.md-sizes {
+      display: none;
+    }
+
+    &:hover {
+      p {
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 14px;
+      }
     }
   }
 }

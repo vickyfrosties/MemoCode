@@ -1,17 +1,30 @@
 @use "/src/variables";
 @use "/src/mixins";
 
+.form-page-title {
+  width: 80%;
+  margin: auto;
+  margin-top: 1.5rem;
+
+  @include mixins.md-sizes {
+    font-size: 1.3em;
+  }
+}
+
 .form-container {
-  border: 2px solid variables.$light;
   min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  @include mixins.md-sizes {
+    height: 100vh;
+    font-size: 18px;
+  }
+
   .form {
     width: 60dvw;
     min-height: 50vh;
-
     margin: auto;
     margin-top: 2rem;
     display: flex;
@@ -21,16 +34,40 @@
     padding: 1.5rem;
 
     @include mixins.md-sizes {
+      display: block;
       flex-direction: row;
+      width: 80%;
+      min-height: 50%;
     }
 
     input:not([type="submit"]) {
       padding: 5px;
     }
+
     .form_title_container {
       width: 50%;
       padding: 1ch;
+
+      @include mixins.md-sizes {
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        > label {
+          height: 115px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+        }
+
+        label:has(textarea) {
+          height: auto;
+        }
+      }
     }
+
     .form_attachment_input_container {
       display: flex;
       flex-direction: column;
@@ -40,12 +77,29 @@
 
       &_block {
         display: flex;
-
         flex-direction: column;
         justify-content: space-between;
         min-height: 50%;
       }
+
+      @include mixins.md-sizes {
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        &_block {
+          > label {
+            height: 115px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+          }
+        }
+      }
     }
+
     .form_submit_button_container {
       display: flex;
       align-self: flex-end;
@@ -63,11 +117,14 @@
     &_validation_indication {
       font-size: 12px;
       padding-top: 5px;
+
+      @include mixins.md-sizes {
+        font-size: 14px;
+      }
     }
 
     &_category_select {
       select {
-        width: 200px;
         padding: 0.8ch;
       }
     }
@@ -90,6 +147,10 @@
       border: none;
       text-align: center;
 
+      @include mixins.md-sizes {
+        font-size: 14px;
+      }
+
       &:hover {
         opacity: 0.8;
       }
@@ -98,6 +159,10 @@
     &_errors {
       color: #d62c2c;
       font-size: 12px;
+
+      @include mixins.md-sizes {
+        font-size: 14px;
+      }
     }
   }
 }

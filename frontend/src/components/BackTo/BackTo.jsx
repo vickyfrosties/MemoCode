@@ -12,12 +12,17 @@ const BackTo = ({ resetDataForm }) => {
   };
   return (
     <>
-      <div className={style["arrow-container"]} onClick={handleClick}>
-        <div className={style["arrow-container-svg-container"]}>
-          <img src="/assets/arrow-left.svg" alt="Back to home page" />
-        </div>
-        <div className={style["arrow-container-description-container"]}>
-          <p>Go back to home page</p>
+      <div className={style["arrow-container"]}>
+        <div className={style["arrow-container-bis"]}>
+          <a
+            onClick={handleClick}
+            className={style["arrow-container-svg-container"]}
+          >
+            <img src="/assets/arrow-left.svg" alt="Back to home page" />
+          </a>
+          <div className={style["arrow-container-description-container"]}>
+            <p>Go back to home page</p>
+          </div>
         </div>
       </div>
     </>

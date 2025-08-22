@@ -77,11 +77,14 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
   return (
     <>
       <BackTo resetDataForm={resetDataForm} />
+
+      <h3 className={style["form-page-title"]}>Add a new memo</h3>
+
       <section className={style["form-container"]}>
         <form className={style["form"]} onSubmit={handleSubmit} id="note-form">
           <div className={style["form_title_container"]}>
             <label className={style["form_title_input"]}>
-              Title:
+              Title
               <input
                 type="text"
                 name="title"
@@ -99,7 +102,7 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
             </label>
 
             <label className={style["form_category_select"]}>
-              Category:
+              Category
               <select
                 name="category"
                 id="category-select"
@@ -119,7 +122,7 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
             </label>
 
             <label className={style["form_description_input"]}>
-              Description:
+              Description
               <textarea
                 name="description"
                 id="description"
@@ -143,7 +146,7 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
           <div className={style["form_attachment_input_container"]}>
             <div className={style["form_attachment_input_container_block"]}>
               <label className={style["form_attachment_input"]}>
-                Attachment:
+                Attachment
                 <input
                   type="url"
                   name="picture"
@@ -160,7 +163,7 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
               </label>
 
               <label className={style["form_link_input"]}>
-                Useful link:
+                Useful link
                 <input
                   type="url"
                   name="link"
