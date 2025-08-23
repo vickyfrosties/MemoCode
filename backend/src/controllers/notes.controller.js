@@ -1,6 +1,7 @@
 import { MongoClient, ObjectId } from "mongodb";
 import { connectDb } from "../config/db.js";
 
+//#region Demo Notes
 // ! Demo Notes
 export async function getDemoNotes(request, response) {
   const client = new MongoClient(process.env.ATLAS_URI);
@@ -12,29 +13,43 @@ export async function getDemoNotes(request, response) {
     const demoNotes = await demoCollection.find().toArray();
 
     if (demoNotes.length === 0) {
-      return response.json({
-        error:
-          "There's no current data stored in database, please create a new memo",
+      return response.status(204).json({
+        status: 204,
+        message: "No notes are existing.",
+        data: [],
+        error: "No Content.",
+        success: true,
       });
     }
-    return response.json({
-      status: response.status,
+    return response.status(200).json({
+      status: 200,
+      message: "Memo have been successfully retrieved.",
       data: demoNotes,
+      error: null,
+      success: true,
     });
   } catch (error) {
-    return response.status(500).json({
-      message: "Note cannot be added",
+    return response.json({
+      status: 500,
+      message: "An unexpected error occured while retrieving notes.",
+      data: null,
       error: error.message,
       success: false,
     });
+  } finally {
+    await client.close();
   }
 }
 
 export async function getDemoNoteById(request, response) {
   const id = request.params.id;
+
   if (!ObjectId.isValid(id)) {
     return response.status(400).json({
-      message: "Invalid ID format",
+      status: 400,
+      message: "A field does not match the validation document.",
+      data: [],
+      error: "Invalid ID format",
       success: false,
     });
 
@@ -47,25 +62,34 @@ export async function getDemoNoteById(request, response) {
     const demoNoteId = await demoCollection.findOne({ _id: new ObjectId(id) });
 
     const idString = demoNoteId._id;
+
     if (!demoNoteId) {
       return response.status(404).json({
-        message: "This memo doesn't exist ;(",
+        status: 404,
+        message: "This demo does not exist.",
+        data: [],
+        error: "No Content.",
         success: false,
       });
     }
 
     return response.status(200).json({
-      success: true,
-      id: idString,
+      status: 200,
+      message: "Memo has been retrieved with success.",
       data: demoNoteId,
+      error: null,
+      success: true,
     });
   } catch (error) {
     return response.status(500).json({
-      message: "Note by id cannot be choose",
-      id: id,
+      status: 500,
+      message: "An unexpected error occured while retrieving notes.",
+      data: null,
       error: error.message,
       success: false,
     });
+  } finally {
+    await client.close();
   }
 }
 
@@ -86,14 +110,20 @@ export async function createDemoNote(request, response) {
 
     const demoNoteToCreate = await demoCollection.insertOne(newDemoNote);
 
-    return response
-      .status(200)
-      .json({ message: "Note added successfully !", success: true });
+    return response.status(200).json({
+      status: 200,
+      message: "Memo has been created with success.",
+      data: newDemoNote,
+      error: null,
+      success: true,
+    });
   } catch (error) {
     response.status(500).json({
-      message: error.message,
+      status: 500,
+      message: "An error occured while created a note.",
+      data: null,
+      error: error.message,
       success: false,
-      error: error,
       description:
         error.errorResponse.errInfo.details.schemaRulesNotSatisfied[0]
           .propertiesNotSatisfied[0].description,
@@ -113,22 +143,34 @@ export async function deleteDemoNote(request, response) {
     const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
 
     // * Convert id to match MongoDB ObjectId format and delete it
-    if (!ObjectId.isValid) {
-      throw new Error("ObjectId format is not valid, id must be a string");
+    if (!ObjectId.isValid(id)) {
+      return response.status(404).json({
+        status: 404,
+        success: false,
+        message: "Note not found.",
+        data: null,
+        error: `No note exist with ID: ${id}`,
+      });
     }
+
     const noteToDelete = await demoCollection.deleteOne({
       _id: new ObjectId(id),
     });
 
     return response.status(200).json({
-      message: `Note with id: ${id} has been deleted successfully!`,
+      status: 200,
+      message: "Note has been successfully deleted.",
+      data: `Id note: ${id}`,
+      error: null,
       success: true,
     });
   } catch (error) {
     return response.status(500).json({
-      message: "Network error",
-      success: false,
+      status: 500,
+      message: "An error occured while created a note.",
+      data: null,
       error: error.message,
+      success: false,
     });
   } finally {
     await client.close();
@@ -153,17 +195,28 @@ export async function editDemoNote(request, response) {
     );
 
     return response.status(200).json({
-      message: `Note with id: ${id} has been edited successfully!`,
+      status: 200,
+      message: "Note has been edited with success.",
+      data: request.body,
+      error: null,
       success: true,
     });
   } catch (error) {
     return response.status(500).json({
-      message: "Network Error.",
-      error: error,
+      status: 500,
+      message: "An error occured while created a note.",
+      data: null,
+      error: error.message,
+      success: false,
     });
+  } finally {
+    await client.close();
   }
 }
 
+//#endregion
+
+//#region Personal notes (not for demo purpose)
 // ! Personal Notes
 // * - lire les notes,
 export async function getNotes(request, response) {
@@ -178,21 +231,29 @@ export async function getNotes(request, response) {
     const dataArray = await dataResult.toArray();
 
     if (dataArray.length === 0) {
-      return response.json({
-        error:
-          "There's no current data stored in database, please create a new memo",
+      return response.status(204).json({
+        status: 204,
+        message: "No notes yet.",
+        data: [],
+        error: "No Content.",
+        success: true,
       });
     }
 
     return response.status(200).json({
-      message: "Fetch data from request is a success",
-      data: dataArray,
+      status: 200,
+      message: "Memo have been successfully retrieved.",
+      data: demoNotes,
+      error: null,
+      success: true,
     });
   } catch (error) {
-    return response.status(500).json({
+    return response.json({
+      status: 500,
+      message: "An unexpected error occured while retrieving notes.",
+      data: null,
+      error: error.message,
       success: false,
-      error: "Network error",
-      message: error.message,
     });
   } finally {
     await client.close();
@@ -205,7 +266,10 @@ export async function getNoteById(request, response) {
 
   if (!ObjectId.isValid(noteId)) {
     return response.status(400).json({
-      message: "Invalid ID format",
+      status: 400,
+      message: "A field does not match the validation document.",
+      data: [],
+      error: "Invalid ID format",
       success: false,
     });
   }
@@ -223,19 +287,26 @@ export async function getNoteById(request, response) {
 
     if (!note) {
       return response.status(404).json({
-        message: "This memo doesn't exist ;(",
+        status: 404,
+        message: "This demo does not exist.",
+        data: [],
+        error: "No Content.",
         success: false,
       });
     }
 
     return response.status(200).json({
+      status: 200,
+      message: "Memo has been retrieved with success.",
+      data: demoNoteId,
+      error: null,
       success: true,
-      id: idString,
-      data: note,
     });
   } catch (error) {
     return response.status(500).json({
-      message: "Note by id cannot be choose",
+      status: 500,
+      message: "An unexpected error occured while retrieving notes.",
+      data: null,
       error: error.message,
       success: false,
     });
@@ -265,14 +336,20 @@ export async function createNote(request, response) {
 
     const noteToCreate = await notesCollection.insertOne(newNote);
 
-    return response
-      .status(200)
-      .json({ message: "Note added successfully !", success: true });
+    return response.status(200).json({
+      status: 200,
+      message: "Memo has been created with success.",
+      data: newDemoNote,
+      error: null,
+      success: true,
+    });
   } catch (error) {
     response.status(500).json({
-      message: error.message,
+      status: 500,
+      message: "An error occured while created a note.",
+      data: null,
+      error: error.message,
       success: false,
-      error: error,
       description:
         error.errorResponse.errInfo.details.schemaRulesNotSatisfied[0]
           .propertiesNotSatisfied[0].description,
@@ -293,21 +370,34 @@ export async function deleteNote(request, response) {
     const noteColl = client
       .db("memocode")
       .collection(process.env.MONGO_COLLECTION);
+
     // * Convert id to match MongoDB ObjectId format and delete it
-    if (!ObjectId.isValid) {
-      throw new Error("ObjectId format is not valid, id must be a string");
+    if (!ObjectId.isValid(id)) {
+      return response.status(404).json({
+        status: 404,
+        success: false,
+        message: "Note not found.",
+        data: null,
+        error: `No note exist with ID: ${id}`,
+      });
     }
+
     const noteToDelete = await noteColl.deleteOne({ _id: new ObjectId(id) });
 
     return response.status(200).json({
-      message: `Note with id: ${id} has been deleted successfully!`,
+      status: 200,
+      message: "Note has been successfully deleted.",
+      data: `Id note: ${id}`,
+      error: null,
       success: true,
     });
   } catch (error) {
     return response.status(500).json({
-      message: "Network error",
-      success: false,
+      status: 500,
+      message: "An error occured while created a note.",
+      data: null,
       error: error.message,
+      success: false,
     });
   } finally {
     await client.close();
@@ -331,13 +421,23 @@ export async function editNote(request, response) {
     );
 
     return response.status(200).json({
-      message: `Note with id: ${id} has been edited successfully!`,
+      status: 200,
+      message: "Note has been edited with success.",
+      data: request.body,
+      error: null,
       success: true,
     });
   } catch (error) {
     return response.status(500).json({
-      message: "Network Error.",
-      error: error,
+      status: 500,
+      message: "An error occured while created a note.",
+      data: null,
+      error: error.message,
+      success: false,
     });
+  } finally {
+    await client.close();
   }
 }
+
+//#endregion

@@ -7,9 +7,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
   return (
     <>
       {notes.length === 0 ? (
-        <p className={style["spinner_message"]}>
-          There are no memo stored in the database. Please create a new one.
-        </p>
+        <p className={style["spinner_message"]}>No notes yet.</p>
       ) : notesFiltered.length === 0 ? (
         <p className={style["spinner_message"]}>
           There are no memo in this category.
