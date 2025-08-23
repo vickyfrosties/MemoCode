@@ -7,6 +7,7 @@ import { Navigate, Route, Routes } from "react-router";
 import Footer from "./components/Footer/Footer";
 import NoteCard from "./components/NoteCard/NoteCard";
 import EditForm from "./containers/NoteEditForm/EditForm";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -108,6 +109,8 @@ function App() {
           />
 
           <Route path="/form/edit/:id" element={<EditForm />} />
+
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </section>
 
