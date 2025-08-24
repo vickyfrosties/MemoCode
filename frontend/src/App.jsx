@@ -94,7 +94,12 @@ function App() {
 
           <Route
             path="/notes/:id"
-            element={<NoteCard categoryColors={categoryColors} />}
+            element={
+              <NoteCard
+                deleteNote={deleteNote}
+                categoryColors={categoryColors}
+              />
+            }
           />
 
           <Route

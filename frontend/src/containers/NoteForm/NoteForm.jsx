@@ -43,6 +43,15 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
     e.preventDefault();
     const errors = {};
 
+    const descriptionCount = data.description.trim().length;
+
+    if (descriptionCount > 2000) {
+      alert(
+        "The description must contain up to 2000 words maximum (less than 5 paragraphs)."
+      );
+      return;
+    }
+
     if (!data.title) {
       errors.title = "Title is required, please enter a valid name.";
     }

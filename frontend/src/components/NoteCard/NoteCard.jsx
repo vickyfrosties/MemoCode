@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 import style from "../NoteCard/NoteCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import EditNote from "../../containers/EditNote/EditNote";
 import BackTo from "../BackTo/BackTo";
 
-const NoteCard = ({ categoryColors }) => {
+const NoteCard = ({ categoryColors, deleteNote }) => {
   const { id } = useParams();
   const [memo, setMemo] = useState([]);
 
@@ -80,7 +80,7 @@ const NoteCard = ({ categoryColors }) => {
               <img src={memo.picture || null} alt={memo.title} />
             </div>
             <div className={style["card_container_actions"]}>
-              <DeleteNote />
+              <DeleteNote deleteNote={deleteNote} id={id} />
               <EditNote id={id} />
             </div>
           </div>
