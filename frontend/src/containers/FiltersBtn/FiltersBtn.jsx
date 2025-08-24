@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import style from "./FiltersBtn.module.scss";
 
-const FiltersBtn = () => {
+const FiltersBtn = ({ setWord, word, setSelectedCategory }) => {
   const [isActive, setIsActive] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
@@ -45,11 +45,14 @@ const FiltersBtn = () => {
         </button>
       </div>
 
-      <section>
+      <section className={style["modal-container"]}>
         <FiltersModal
           className={isActive ? style.active : style.notActive}
           isActive={isActive}
           setIsActive={setIsActive}
+          setWord={setWord}
+          word={word}
+          setSelectedCategory={setSelectedCategory}
         />
       </section>
     </>

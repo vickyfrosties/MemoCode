@@ -1,6 +1,6 @@
 import style from "./WordFilter.module.scss";
 
-const WordFilter = ({ setWord, word }) => {
+const WordFilter = ({ setWord }) => {
   return (
     <>
       <div className={style["word-filter-container"]}>
