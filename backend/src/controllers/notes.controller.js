@@ -52,9 +52,8 @@ export async function getDemoNoteById(request, response) {
       error: "Invalid ID format",
       success: false,
     });
-
-    const client = new MongoClient(process.env.ATLAS_URI);
   }
+  const client = new MongoClient(process.env.ATLAS_URI);
   try {
     const db = await connectDb();
     const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);

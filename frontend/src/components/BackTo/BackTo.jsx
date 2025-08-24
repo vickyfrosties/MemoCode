@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router";
 import style from "./BackTo.module.scss";
 
-const BackTo = ({ resetDataForm }) => {
+const BackTo = () => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
-
     navigate("/notes");
-    resetDataForm();
   };
   return (
     <>
