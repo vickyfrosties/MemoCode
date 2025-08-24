@@ -3,7 +3,9 @@ import style from "./SelectFilter.module.scss";
 const SelectFilter = ({ setSelectedCategory }) => {
   return (
     <>
-      <div className={style["container_filter"]}>
+      <div
+        className={`${style["container_filter"]} ${style["container_filter_responsive"]}`}
+      >
         <p>Filter by:</p>
         <select
           name="filter-category"

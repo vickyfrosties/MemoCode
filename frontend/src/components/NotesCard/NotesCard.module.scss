@@ -2,9 +2,15 @@
 @use "/src/variables";
 
 .spinner_message {
-  text-align: center;
-  width: 80vw;
-  color: #bd2323;
+  margin: 0;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: #bd2323;
+  }
 }
 
 .notes-container {

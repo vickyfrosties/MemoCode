@@ -37,6 +37,16 @@
   }
 }
 
+.modal-container {
+  position: absolute;
+  width: 80%;
+  top: 180px;
+  left: 3.2rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
 .active {
   display: block;
 }

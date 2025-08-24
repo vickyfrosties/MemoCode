@@ -2,11 +2,10 @@
 
 .word-filter-container {
   display: flex;
-  // align-items: center;
   justify-content: space-between;
 
   p {
-    // margin-right: 1em;
+    margin-right: 1em;
   }
 
   input {
@@ -20,14 +19,5 @@
 
   @include mixins.tablet {
     display: none;
-
-    border: 2px solid teal;
   }
-
-  // @include mixins.sm-phone {
-  //   input {
-  //     width: 100%;
-  //     padding: 5px;
-  //   }
-  // }
 }

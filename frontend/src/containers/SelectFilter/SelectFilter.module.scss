@@ -2,11 +2,8 @@
 
 .container {
   &_filter {
-    // width: 60%;
     display: flex;
-    // justify-content: end;
     justify-content: space-between;
-    // align-items: center;
 
     p {
       margin-right: 1em;
@@ -30,13 +27,3 @@
     }
   }
 }
-
-// @media (max-width: 800px) {
-//   .container {
-//     &_filter {
-//       justify-content: start;
-
-//       width: 100%;
-//     }
-//   }
-// }

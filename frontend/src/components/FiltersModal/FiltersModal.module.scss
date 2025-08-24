@@ -1,28 +1,24 @@
 @use "/src/variables";
+@use "/src/mixins";
 
 .active {
-  display: block;
-  border-radius: 0.5ch;
-  background-color: variables.$button;
-  background-color: #e6efff;
-  min-width: 50vw;
+  min-width: 100%;
+  background-color: #aac7ff;
   height: 15%;
-  display: flex;
   padding: 1ch;
   z-index: 1;
 
-  position: absolute;
-  top: 35%;
-  left: 4.3rem;
+  .filters_modal_container {
+    display: flex;
+    width: 100%;
+  }
 
   .filters_modal_select,
   .filters_modal_input_word {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid red;
     width: 50%;
-    border: 1px solid grey;
 
     p {
       font-size: 14px;
@@ -31,6 +27,10 @@
 
   select {
     padding: 2px;
+  }
+
+  @include mixins.tb-to-lg {
+    display: none;
   }
 }
 
