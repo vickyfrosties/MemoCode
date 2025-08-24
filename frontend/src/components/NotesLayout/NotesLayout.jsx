@@ -62,6 +62,7 @@ const NotesLayout = ({
       <AddNoteButton
         setSelectedCategory={setSelectedCategory}
         word={word}
+        selectedCategory={selectedCategory}
         setWord={setWord}
       />
 

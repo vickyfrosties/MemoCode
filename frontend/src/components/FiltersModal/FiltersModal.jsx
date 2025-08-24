@@ -1,10 +1,11 @@
 import style from "./FiltersModal.module.scss";
 
 const FiltersModal = ({
-  setIsActive,
   isActive,
   setWord,
   setSelectedCategory,
+  word,
+  selectedCategory,
 }) => {
   function resetFilters() {
     setSelectedCategory("");
@@ -19,6 +20,7 @@ const FiltersModal = ({
             <input
               type="text"
               placeholder="e.g. 'testing'"
+              value={word}
               onChange={(e) => setWord(e.target.value)}
             />
           </div>
@@ -28,6 +30,7 @@ const FiltersModal = ({
             <select
               name="filter-category"
               id="filter-category"
+              value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
               <option value="" disabled>
@@ -41,7 +44,7 @@ const FiltersModal = ({
             </select>
           </div>
 
-          <button onClick={resetFilters}>reset filters</button>
+          <button onClick={resetFilters}>Reset</button>
         </div>
       </section>
     </>

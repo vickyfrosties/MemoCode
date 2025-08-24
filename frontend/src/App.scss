@@ -1,3 +1,5 @@
+@use "/src/variables";
+
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +28,7 @@ body,
   button,
   select {
     &:focus {
-      border: 3px solid #ee4266;
+      border: 2px solid variables.$light;
     }
   }
 }

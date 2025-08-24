@@ -11,6 +11,7 @@ const AddNoteButton = ({
   setWord,
   handleWordFilter,
   word,
+  selectedCategory,
 }) => {
   const location = useLocation("");
   return (
@@ -20,6 +21,7 @@ const AddNoteButton = ({
           setWord={setWord}
           word={word}
           setSelectedCategory={setSelectedCategory}
+          selectedCategory={selectedCategory}
         />
         <section className={style["container_filter_section"]}>
           {location.pathname === "/notes" && (

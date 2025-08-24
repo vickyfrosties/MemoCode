@@ -3,7 +3,12 @@ import { useState } from "react";
 
 import style from "./FiltersBtn.module.scss";
 
-const FiltersBtn = ({ setWord, word, setSelectedCategory }) => {
+const FiltersBtn = ({
+  setWord,
+  word,
+  setSelectedCategory,
+  selectedCategory,
+}) => {
   const [isActive, setIsActive] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
@@ -53,6 +58,7 @@ const FiltersBtn = ({ setWord, word, setSelectedCategory }) => {
           setWord={setWord}
           word={word}
           setSelectedCategory={setSelectedCategory}
+          selectedCategory={selectedCategory}
         />
       </section>
     </>

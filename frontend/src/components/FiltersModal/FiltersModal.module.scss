@@ -2,8 +2,8 @@
 @use "/src/mixins";
 
 .active {
-  min-width: 100%;
-  background-color: #aac7ff;
+  border: 1px solid variables.$light;
+  background-color: #f8f7ff;
   height: 15%;
   padding: 1ch;
   z-index: 1;
@@ -11,6 +11,28 @@
   .filters_modal_container {
     display: flex;
     width: 100%;
+
+    button {
+      background-color: variables.$button;
+      width: 4rem;
+      padding: 0.5ch;
+      border-radius: 0.5ch;
+      border: none;
+      color: white;
+    }
+
+    @include mixins.phone {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      justify-content: space-between;
+      padding: 0.5ch;
+
+      button {
+        text-align: center;
+        align-self: self-end;
+      }
+    }
   }
 
   .filters_modal_select,
@@ -19,6 +41,10 @@
     justify-content: space-around;
     align-items: center;
     width: 50%;
+
+    @include mixins.phone {
+      width: 100%;
+    }
 
     p {
       font-size: 14px;
@@ -31,6 +57,15 @@
 
   @include mixins.tb-to-lg {
     display: none;
+  }
+
+  @include mixins.phone {
+    width: 100vw;
+
+    btn {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 

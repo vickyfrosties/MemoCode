@@ -20,10 +20,6 @@
       font-size: 12px;
     }
 
-    &:active {
-      border: 2px solid lightcoral;
-    }
-
     &:hover {
       opacity: 0.8;
     }
@@ -32,6 +28,7 @@
   @include mixins.tb-to-lg {
     display: none;
   }
+
   @include mixins.md-sizes {
     display: block;
   }
@@ -40,11 +37,14 @@
 .modal-container {
   position: absolute;
   width: 80%;
+  height: 100%;
   top: 180px;
-  left: 3.2rem;
-  height: auto;
   display: flex;
   justify-content: center;
+
+  @include mixins.phone {
+    width: 90%;
+  }
 }
 
 .active {
