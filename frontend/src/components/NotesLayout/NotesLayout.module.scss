@@ -1,5 +1,11 @@
 @use "/src/mixins";
 
+.notes-container-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .notes-container {
   width: 80vw;
   overflow-y: auto;
@@ -8,7 +14,6 @@
   align-items: stretch;
   grid-template-columns: repeat(2, minmax(300px, 1fr));
   gap: 50px 100px;
-  flex: 1;
 
   &-title {
     width: 90%;

@@ -66,13 +66,15 @@ const NotesLayout = ({
         setWord={setWord}
       />
 
-      <section className={style["notes-container"]}>
-        <NotesCard
-          notesFiltered={notesFiltered}
-          notes={notes}
-          deleteNote={handleDelete}
-          categoryColors={categoryColors}
-        />
+      <section className={style["notes-container-container"]}>
+        <section className={style["notes-container"]}>
+          <NotesCard
+            notesFiltered={notesFiltered}
+            notes={notes}
+            deleteNote={handleDelete}
+            categoryColors={categoryColors}
+          />
+        </section>
       </section>
     </>
   );
