@@ -4,8 +4,6 @@ import { connectDb } from "../config/db.js";
 //#region Demo Notes
 // ! Demo Notes
 export async function getDemoNotes(request, response) {
-  const client = new MongoClient(process.env.ATLAS_URI);
-
   try {
     const db = await connectDb();
 
@@ -36,8 +34,6 @@ export async function getDemoNotes(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -53,7 +49,6 @@ export async function getDemoNoteById(request, response) {
       success: false,
     });
   }
-  const client = new MongoClient(process.env.ATLAS_URI);
   try {
     const db = await connectDb();
     const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
@@ -87,8 +82,6 @@ export async function getDemoNoteById(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -100,7 +93,6 @@ export async function createDemoNote(request, response) {
     link: request.body.link,
     category: request.body.category,
   };
-  const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
     const db = await connectDb();
@@ -127,15 +119,12 @@ export async function createDemoNote(request, response) {
         error.errorResponse.errInfo.details.schemaRulesNotSatisfied[0]
           .propertiesNotSatisfied[0].description,
     });
-  } finally {
-    await client.close();
   }
 }
 
 export async function deleteDemoNote(request, response) {
   // * Retrieve id from request params
   const id = request.params.id;
-  const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
     const db = await connectDb();
@@ -171,14 +160,11 @@ export async function deleteDemoNote(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
 export async function editDemoNote(request, response) {
   const id = request.params.id;
-  const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
     const db = await connectDb();
@@ -208,8 +194,6 @@ export async function editDemoNote(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -219,7 +203,6 @@ export async function editDemoNote(request, response) {
 // ! Personal Notes
 // * - lire les notes,
 export async function getNotes(request, response) {
-  const client = new MongoClient(process.env.ATLAS_URI);
   try {
     const dbConnection = client.db("memocode");
     const notesCollection = dbConnection.collection(
@@ -254,8 +237,6 @@ export async function getNotes(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -272,8 +253,6 @@ export async function getNoteById(request, response) {
       success: false,
     });
   }
-
-  const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
     const notesCollection = client
@@ -309,8 +288,6 @@ export async function getNoteById(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -323,8 +300,6 @@ export async function createNote(request, response) {
     link: request.body.link,
     category: request.body.category,
   };
-
-  const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
     await client.connect();
@@ -353,8 +328,6 @@ export async function createNote(request, response) {
         error.errorResponse.errInfo.details.schemaRulesNotSatisfied[0]
           .propertiesNotSatisfied[0].description,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -362,8 +335,6 @@ export async function createNote(request, response) {
 export async function deleteNote(request, response) {
   // * Retrieve id from request params
   const id = request.params.id;
-
-  const client = new MongoClient(process.env.ATLAS_URI);
 
   try {
     const noteColl = client
@@ -398,8 +369,6 @@ export async function deleteNote(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
@@ -434,8 +403,6 @@ export async function editNote(request, response) {
       error: error.message,
       success: false,
     });
-  } finally {
-    await client.close();
   }
 }
 
