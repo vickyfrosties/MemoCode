@@ -59,7 +59,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
                   to={`/notes/${note._id}`}
                   className={style["card_see_more"]}
                 >
-                  <p>Voir la note</p>
+                  <p>See more</p>
                 </Link>
               </div>
             </section>
