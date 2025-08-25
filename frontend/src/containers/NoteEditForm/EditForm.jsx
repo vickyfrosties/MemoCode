@@ -27,7 +27,7 @@ const EditForm = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          return Promise.reject(response);
+          throw new Error(`Id note ${id} couldn't be fetched.`);
         }
         return response.json();
       })
@@ -42,7 +42,7 @@ const EditForm = () => {
       })
 
       .catch((error) => {
-        console.error("An error occurred:", error);
+        console.error("An error occured with the request:", error.mesage);
       });
   }, []);
 
@@ -56,13 +56,13 @@ const EditForm = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          return Promise.reject(response);
+          throw new Error("Note couldn't be edited.");
         }
         return response.json();
       })
 
       .catch((error) => {
-        console.error("Something went wrong", error);
+        console.error("An error occured with the request:", error.message);
       });
   }
 

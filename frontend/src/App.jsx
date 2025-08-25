@@ -50,7 +50,7 @@ function App() {
 
       await response.json();
     } catch (error) {
-      console.error("Error after request attempt :", error);
+      console.error("An error occured with the request:", error.message);
     }
   };
 

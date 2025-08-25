@@ -20,7 +20,7 @@ const NoteCard = ({ categoryColors, deleteNote }) => {
       })
         .then((response) => {
           if (!response.ok) {
-            return Promise.reject(response);
+            throw new Error(`Id note ${id} couldn't be fetched.`);
           }
           return response.json();
         })
@@ -29,7 +29,7 @@ const NoteCard = ({ categoryColors, deleteNote }) => {
         })
 
         .catch((error) => {
-          console.log("An error occurred:", error);
+          console.error("An error occured with the request:", error.message);
         });
     }, []);
   }

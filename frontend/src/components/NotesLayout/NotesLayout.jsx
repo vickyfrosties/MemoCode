@@ -43,7 +43,7 @@ const NotesLayout = ({
     })
       .then((response) => {
         if (!response.ok) {
-          return Promise.reject(response);
+          throw new Error("Notes couldn't be fetched.");
         }
         return response.json();
       })
@@ -52,7 +52,7 @@ const NotesLayout = ({
         setNotes(data.data);
       })
       .catch((error) => {
-        throw new Error(error);
+        console.error("An error occured with the request:", error.message);
       });
   }, []);
 

@@ -30,11 +30,11 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
     )
       .then((response) => {
         if (!response.ok) {
-          return Promise.reject(response);
+          throw new Error("Note couldn't be added");
         }
       })
       .catch((error) => {
-        console.log("Erreur de la requête:", error);
+        console.error("An error occured with the request:", error.message);
       });
   }
 
