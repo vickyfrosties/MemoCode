@@ -68,6 +68,12 @@ a:visited {
     padding: 1ch;
     overflow-y: auto;
 
+    @include mixins.sm-phone {
+      height: 250px;
+      font-size: 12px;
+      overflow-y: scroll;
+    }
+
     @include mixins.up-larger {
       padding: 2ch;
       grid-auto-rows: max-content;
@@ -86,6 +92,10 @@ a:visited {
       p {
         font-size: 1.5ch;
       }
+    }
+
+    @include mixins.sm-phone {
+      font-size: 14px;
     }
   }
 
@@ -115,6 +125,11 @@ a:visited {
     grid-row: 3/4;
     display: flex;
     justify-content: space-evenly;
+
+    @include mixins.md-sizes {
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 }
 
