@@ -7,14 +7,14 @@
 ![Static Badge](https://img.shields.io/badge/mongodb-56a94c?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 
-## ! Important note
+## ❗️ Important note
 
 This project is still in development mode. The only way to use it is to run it locally. Make sure to follow all the steps to make it work.
 
 ## Table of Contents
 
 - [MemoCode](#memocode)
-  - [! Important note](#-important-note)
+  - [❗️ Important note](#️-important-note)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Purpose](#purpose)
@@ -27,6 +27,7 @@ This project is still in development mode. The only way to use it is to run it l
   - [Usage](#usage)
     - [Client](#client)
     - [Server](#server)
+  - [Roadmap](#roadmap)
 
 ## Introduction
 
@@ -38,7 +39,7 @@ MemoCode is a full-stack web application built with **React**, **Express**, **No
 
 ### Purpose
 
-This project goal is to have a unique centralized space and get an **easy access** at all the keys resources and concepts from the web development industry that I learn. As I read blogs, articles and documentations, it gets really challenging to keep track of all the information. MemoCode is my tool solution to solve this problem.
+This project goal is to provide a unique centralized space and get an **easy access** at all the keys resources and concepts from the web development industry that I learn. As I read blogs, articles and documentations, it gets really challenging to keep track of all the information. MemoCode is my tool solution to solve this problem.
 
 ### Technologies stack
 
@@ -138,7 +139,7 @@ To run the project locally, you need a **MongoDB Atlas Cluster**. Follow the ste
 There are two ways to configure the project environment variables:
 
 - **Option 1: Demo collection (as in the live demo)**:
-  Copy/paste the `.env.example` file and rename it to `.env`. Then change the variables as following:
+  Copy/paste the `.env.example` file and rename it to `.env`. Then update the variables as following:
 
 ```
 MONGO_URI=your_mongo_uri
@@ -147,7 +148,7 @@ SERVER_PORT=8000
 CLIENT_PORT=5173
 ```
 
-- **Option 2: If you want to have your own Mongo DB collection**: Copy/paste the `.env.example` file and rename it for `.env`. Then change the variables as following:
+- **Option 2: If you want to have your own Mongo DB collection**: Copy/paste the `.env.example` file and rename it to `.env`. Then update the variables as following:
 
 ```
 MONGO_URI=your_mongo_uri
@@ -160,15 +161,15 @@ CLIENT_PORT=5173
 
 ## Usage
 
+❗️**Important**: **Both sides** of the project - **Client AND Server** - have to run at the same time. Split your terminal in **two separate terminals**: one for client - one for server.
+
 ### [Client](frontend/README.md)
 
-To run the project, execute the following command on the **client** terminal:
+To run the client side, execute the following command on the **client** terminal:
 
 ```
 npm run dev
 ```
-
-Click the link that shows up in the console and it should open the web application on your browser.
 
 ### [Server](backend/README.md)
 
@@ -178,4 +179,32 @@ To run the server and the database connection, execute the following command on 
 npm run dev
 ```
 
-You should see a logging message such as : "_MongoDB is connected!_" if so, the whole project is ready to be used.
+You should see a logging message such as :
+
+```
+"MongoDB is connected!"
+```
+
+This is the sign that the server and database are running and so the project is ready to be used. Next step, go on [http://localhost:5173](http://localhost:5173/) in your browser it should open the web application.
+
+## Roadmap
+
+This is a list of the future features that I will implement.
+
+- **Deploy an online demo**
+
+Have a direct access to the project without having to run it on a local machine.
+
+- **Add filters categories**
+
+Possibility to create as many personal filters as you want.
+
+- **Add several links sources**
+
+Add more than one link to make the information more reliable and complete.
+
+- **Authentification system**
+
+Implement both register & login system for security purposes and user experience.
+
+Each user will have access to their own memos without having to create a personal cluster.
