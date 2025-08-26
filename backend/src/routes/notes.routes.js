@@ -21,15 +21,15 @@ notesRouter.route("/form").post(createDemoNote);
 notesRouter.route("/form/edit/:id").patch(editDemoNote);
 
 // ! Personal Notes
-// * - lire les notes,
+// // * - lire les notes,
 // notesRouter.route("/notes").get(getNotes);
-// * - lire une note,
+// // * - lire une note,
 // notesRouter.route("/notes/:id").get(getNoteById);
-// * - ajouter une nouvelle note,
+// // * - ajouter une nouvelle note,
 // notesRouter.route("/form").post(createNote);
-// * - supprimer une note spécifique,
+// // * - supprimer une note spécifique,
 // notesRouter.route("/notes/:id").delete(deleteNote);
-// * - modifier une note existante
+// // * - modifier une note existante
 // notesRouter.route("/form/edit/:id").patch(editNote);
 
 export default notesRouter;

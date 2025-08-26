@@ -7,7 +7,7 @@ export async function getDemoNotes(request, response) {
   try {
     const db = await connectDb();
 
-    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+    const demoCollection = db.collection(process.env.MONGO_COLLECTION);
     const demoNotes = await demoCollection.find().toArray();
 
     if (demoNotes.length === 0) {
@@ -51,7 +51,7 @@ export async function getDemoNoteById(request, response) {
   }
   try {
     const db = await connectDb();
-    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+    const demoCollection = db.collection(process.env.MONGO_COLLECTION);
 
     const demoNoteId = await demoCollection.findOne({ _id: new ObjectId(id) });
 
@@ -97,7 +97,7 @@ export async function createDemoNote(request, response) {
   try {
     const db = await connectDb();
 
-    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+    const demoCollection = db.collection(process.env.MONGO_COLLECTION);
 
     const demoNoteToCreate = await demoCollection.insertOne(newDemoNote);
 
@@ -128,7 +128,7 @@ export async function deleteDemoNote(request, response) {
 
   try {
     const db = await connectDb();
-    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+    const demoCollection = db.collection(process.env.MONGO_COLLECTION);
 
     // * Convert id to match MongoDB ObjectId format and delete it
     if (!ObjectId.isValid(id)) {
@@ -169,7 +169,7 @@ export async function editDemoNote(request, response) {
   try {
     const db = await connectDb();
 
-    const demoCollection = db.collection(process.env.MONGO_DEMO_COLLECTION);
+    const demoCollection = db.collection(process.env.MONGO_COLLECTION);
 
     const noteEdits = await demoCollection.findOneAndUpdate(
       { _id: new ObjectId(id) },
@@ -206,7 +206,7 @@ export async function getNotes(request, response) {
   try {
     const dbConnection = client.db("memocode");
     const notesCollection = dbConnection.collection(
-      process.env.MONGO_COLLECTION
+      process.env.MONGO_PERSONAL_COLLECTION
     );
 
     const dataResult = notesCollection.find();
@@ -257,7 +257,7 @@ export async function getNoteById(request, response) {
   try {
     const notesCollection = client
       .db("memocode")
-      .collection(process.env.MONGO_COLLECTION);
+      .collection(process.env.MONGO_PERSONAL_COLLECTION);
 
     const note = await notesCollection.findOne({ _id: new ObjectId(noteId) });
 
@@ -306,7 +306,7 @@ export async function createNote(request, response) {
 
     const notesCollection = client
       .db("memocode")
-      .collection(process.env.MONGO_COLLECTION);
+      .collection(process.env.MONGO_PERSONAL_COLLECTION);
 
     const noteToCreate = await notesCollection.insertOne(newNote);
 
@@ -339,7 +339,7 @@ export async function deleteNote(request, response) {
   try {
     const noteColl = client
       .db("memocode")
-      .collection(process.env.MONGO_COLLECTION);
+      .collection(process.env.MONGO_PERSONAL_COLLECTION);
 
     // * Convert id to match MongoDB ObjectId format and delete it
     if (!ObjectId.isValid(id)) {
@@ -378,7 +378,9 @@ export async function editNote(request, response) {
   try {
     const db = await connectDb();
 
-    const notesCollection = db.collection(process.env.MONGO_COLLECTION);
+    const notesCollection = db.collection(
+      process.env.MONGO_PERSONAL_COLLECTION
+    );
 
     const noteEdits = await notesCollection.findOneAndUpdate(
       { _id: new ObjectId(id) },

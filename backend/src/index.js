@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const originFront = process.env.CLIENT_PORT || 5173;
-const originServer = process.env.SERVER_PORT || 8000;
+const prod = process.env.PORT || 8000;
 
 let corsOptions = {
   origin: `http://localhost:${originFront}`,
@@ -23,8 +23,8 @@ app.use(express.json());
 //* Routes
 app.use("/", notesRouter);
 
-app.listen(originServer, async () => {
-  console.log(`Server is running on PORT ${originServer}`);
+app.listen(prod, async () => {
+  console.log(`Server is running on PORT ${prod}`);
 
   await validateNote();
   await validateDemoNote();
