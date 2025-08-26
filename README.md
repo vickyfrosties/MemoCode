@@ -22,17 +22,23 @@ This project is still in development mode. The only way to use it is to run it l
   - [Installation](#installation)
     - [Clone the repository](#clone-the-repository)
     - [Install dependencies](#install-dependencies)
+    - [Get your MongoDB URI](#get-your-mongodb-uri)
+    - [Setup environment variables](#setup-environment-variables)
   - [Usage](#usage)
     - [Client](#client)
     - [Server](#server)
 
 ## Introduction
 
-MemoCode is a full-stack web application built with React, Express, Node and MongoDB. It allows you to create notes, read, edit and delete them as long as you like. It uses a clean and responsive interface.
+MemoCode is a full-stack web application built with **React**, **Express**, **Node** and **MongoDB**. It allows you to create notes, read, edit and delete them as long as you like. It uses a clean and responsive interface.
+
+<div style="text-align: center;">
+<img src="./frontend/public/screenshots/homepage.gif" alt="drawing" width="450"/>
+</div>
 
 ### Purpose
 
-This project goal is to have a unique centralized space and get an **easy access** at all the keys resources and concepts from the web development industry that I learn. As I read blogs, articles and documentations, it gets really challenging to keep track of all the information. This project is my tool solution to solve this problem.
+This project goal is to have a unique centralized space and get an **easy access** at all the keys resources and concepts from the web development industry that I learn. As I read blogs, articles and documentations, it gets really challenging to keep track of all the information. MemoCode is my tool solution to solve this problem.
 
 ### Technologies stack
 
@@ -74,14 +80,13 @@ cd MemoCode/backend/
 
 ### Install dependencies
 
-Now, to install all the dependencies, you have to install the package manager (**_node_modules_**) on each folder. Also, make sure you are in the correct directory.
+Now, to install all the dependencies, you have to install the package manager (`node_modules`) on each folder. Also, make sure you are in the correct directory.
 
-With **_npm_** as the package manager, run these commands:
+With `npm` as the package manager, run these commands:
 
 - Client (_MemoCode/frontend/_)
 
 ```
-pwd
 MemoCode/frontend/
 npm install
 ```
@@ -89,12 +94,11 @@ npm install
 - Server (_MemoCode/backend/_)
 
 ```
-pwd
 MemoCode/backend/
 npm install
 ```
 
-With **_yarn_** as the package manager, run these commands:
+With `yarn` as the package manager, run these commands:
 
 - Client (_MemoCode/frontend/_)
 
@@ -110,21 +114,65 @@ cd MemoCode/backend/
 yarn install
 ```
 
+### Get your MongoDB URI
+
+To run the project locally, you need a **MongoDB Atlas Cluster**. Follow the steps:
+
+1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) and create a free account.
+2. Create a new **Project** and then a **Cluster** (choose the free "Shared" plan).
+3. Once the cluster is ready:
+   - Click **Database Access** → add a new user with a username & password.
+   - Click **Network Access** → allow access from your IP address (or `0.0.0.0/0` for testing but temporary only, **DO NOT** forget to **delete** it after use).
+4. Go back to **Clusters** and click on **Connect**. Then choose **Connect your application**.
+5. Copy the connection string. It looks like this:
+
+   ```
+   mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/<databaseName>?retryWrites=true&w=majority
+   ```
+
+6. Replace `<username>`, `<password>`, and `<databaseName>` with your values.
+7. Paste this string in your `.env` file under the variable `MONGO_URI`.
+
+### Setup environment variables
+
+There are two ways to configure the project environment variables:
+
+- **Option 1: Demo collection (as in the live demo)**:
+  Copy/paste the `.env.example` file and rename it to `.env`. Then change the variables as following:
+
+```
+MONGO_URI=your_mongo_uri
+MONGO_COLLECTION=demoNotes
+SERVER_PORT=8000
+CLIENT_PORT=5173
+```
+
+- **Option 2: If you want to have your own Mongo DB collection**: Copy/paste the `.env.example` file and rename it for `.env`. Then change the variables as following:
+
+```
+MONGO_URI=your_mongo_uri
+MONGO_COLLECTION=your_collection_name
+SERVER_PORT=8000
+CLIENT_PORT=5173
+```
+
+**Note: `SERVER_PORT` and `CLIENT_PORT` are only used for local purpose.**
+
 ## Usage
 
 ### [Client](frontend/README.md)
 
-To run the project, execute the following command on the **client** folder:
+To run the project, execute the following command on the **client** terminal:
 
 ```
 npm run dev
 ```
 
-Click the link that shows up in the terminal and it should open the web application on your browser.
+Click the link that shows up in the console and it should open the web application on your browser.
 
 ### [Server](backend/README.md)
 
-To run the server and the database connection, execute the following command on the **server** folder:
+To run the server and the database connection, execute the following command on the **server** terminal:
 
 ```
 npm run dev
