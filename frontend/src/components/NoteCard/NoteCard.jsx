@@ -9,9 +9,11 @@ const NoteCard = ({ categoryColors, deleteNote }) => {
   const { id } = useParams();
   const [memo, setMemo] = useState([]);
 
+  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+
   async function getNoteById() {
     useEffect(() => {
-      fetch(`http://localhost:8000/notes/${id}`, {
+      fetch(`${API_URL}/notes/${id}`, {
         mode: "cors",
         method: "GET",
         headers: {

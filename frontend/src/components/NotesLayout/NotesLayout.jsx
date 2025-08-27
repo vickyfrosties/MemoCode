@@ -27,6 +27,8 @@ const NotesLayout = ({
     return filterSelect && matchWord;
   });
 
+  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+
   const handleDelete = async (id) => {
     await deleteNote(id);
     //* Update the state and display notes without note which matches id deleted
@@ -34,7 +36,7 @@ const NotesLayout = ({
   };
 
   useEffect(() => {
-    fetch("http://localhost:8000/notes", {
+    fetch(`${API_URL}/notes`, {
       mode: "cors",
       method: "GET",
       headers: {

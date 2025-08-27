@@ -15,10 +15,11 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
   });
   // * Check if form is not submitted or not
   const [isSubmit, setIsSubmit] = useState(false);
+  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
 
   async function createNote() {
     fetch(
-      "http://localhost:8000/form",
+      `${API_URL}/form`,
 
       {
         method: "POST",

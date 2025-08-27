@@ -15,10 +15,11 @@ const EditForm = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:8000/notes/${id}`, {
+    fetch(`${API_URL}/notes/${id}`, {
       mode: "cors",
       method: "GET",
       headers: {
@@ -47,7 +48,7 @@ const EditForm = () => {
   }, []);
 
   async function editNote() {
-    fetch(`http://localhost:8000/form/edit/${id}`, {
+    fetch(`${API_URL}/form/edit/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

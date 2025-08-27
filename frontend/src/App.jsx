@@ -31,18 +31,17 @@ function App() {
     gaming: "#C62828",
   };
 
+  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+
   const deleteNote = async (idToDelete) => {
     try {
-      const response = await fetch(
-        `http://localhost:8000/notes/${idToDelete}`,
-        {
-          method: "DELETE",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${API_URL}/notes/${idToDelete}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error("An error occurred while trying delete request");
