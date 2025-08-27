@@ -6,13 +6,13 @@ import { validateDemoNote, validateNote } from "./config/validationNotes.js";
 dotenv.config();
 
 const app = express();
-const originFront = process.env.CLIENT_PORT || 5173;
+const originLocal = `http://localhost:${process.env.CLIENT_PORT || 5173}`;
 const originProd = process.env.PROD_ORIGIN;
 const prod = process.env.PORT || 8000;
 
 let corsOptions = {
-  origin: `http://localhost:${originProd}`,
-  methods: ["GET, PUT, POST, DELETE, PATCH"],
+  origin: [originLocal, originProd],
+  methods: ["GET", "PUT", "POST", "DELETE", "PATCH"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 };
