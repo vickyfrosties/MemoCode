@@ -36,7 +36,7 @@ const NotesLayout = ({
   };
 
   useEffect(() => {
-    fetch(`${API_URL}`, {
+    fetch(`${API_URL}/notes`, {
       mode: "cors",
       method: "GET",
       headers: {

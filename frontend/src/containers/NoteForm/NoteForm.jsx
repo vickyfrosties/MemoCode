@@ -19,7 +19,7 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
 
   async function createNote() {
     fetch(
-      `${API_URL}`,
+      `${API_URL}/form`,
 
       {
         method: "POST",

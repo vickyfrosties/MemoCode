@@ -35,7 +35,7 @@ function App() {
 
   const deleteNote = async (idToDelete) => {
     try {
-      const response = await fetch(`${API_URL}/${idToDelete}`, {
+      const response = await fetch(`${API_URL}/notes/${idToDelete}`, {
         method: "DELETE",
         mode: "cors",
         headers: {
