@@ -22,7 +22,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 //* Routes
-app.use("/", notesRouter);
+app.use("/notes", notesRouter);
 
 app.listen(prod, async () => {
   console.log(`Server is running on PORT ${prod}`);
