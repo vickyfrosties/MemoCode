@@ -19,7 +19,7 @@ const EditForm = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${API_URL}/api/notes/${id}`, {
+    fetch(`${API_URL}/notes/${id}`, {
       mode: "cors",
       method: "GET",
       headers: {

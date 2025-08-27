@@ -13,7 +13,7 @@ const NoteCard = ({ categoryColors, deleteNote }) => {
 
   async function getNoteById() {
     useEffect(() => {
-      fetch(`${API_URL}/${id}`, {
+      fetch(`${API_URL}/notes/${id}`, {
         mode: "cors",
         method: "GET",
         headers: {
