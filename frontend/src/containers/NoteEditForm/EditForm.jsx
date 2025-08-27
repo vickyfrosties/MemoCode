@@ -19,7 +19,7 @@ const EditForm = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`${API_URL}/notes/${id}`, {
+    fetch(`${API_URL}/api/notes/${id}`, {
       mode: "cors",
       method: "GET",
       headers: {
@@ -48,7 +48,7 @@ const EditForm = () => {
   }, []);
 
   async function editNote() {
-    fetch(`${API_URL}/form/edit/${id}`, {
+    fetch(`${API_URL}/api/form/edit/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
