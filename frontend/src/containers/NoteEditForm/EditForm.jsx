@@ -48,7 +48,7 @@ const EditForm = () => {
   }, []);
 
   async function editNote() {
-    fetch(`${API_URL}/api/form/edit/${id}`, {
+    fetch(`${API_URL}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
