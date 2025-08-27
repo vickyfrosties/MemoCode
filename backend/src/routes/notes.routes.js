@@ -14,11 +14,11 @@ import {
 const notesRouter = express.Router();
 
 // ! Demo Notes
-notesRouter.route("/notes").get(getDemoNotes);
-notesRouter.route("/notes/:id").get(getDemoNoteById);
-notesRouter.route("/notes/:id").delete(deleteDemoNote);
-notesRouter.route("/form").post(createDemoNote);
-notesRouter.route("/form/edit/:id").patch(editDemoNote);
+notesRouter.route("/").get(getDemoNotes);
+notesRouter.route("/").get(getDemoNoteById);
+notesRouter.route("/").delete(deleteDemoNote);
+notesRouter.route("/").post(createDemoNote);
+notesRouter.route("/").patch(editDemoNote);
 
 // ! Personal Notes
 // // * - lire les notes,
