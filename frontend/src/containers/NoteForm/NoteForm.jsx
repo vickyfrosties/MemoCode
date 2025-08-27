@@ -15,7 +15,7 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
   });
   // * Check if form is not submitted or not
   const [isSubmit, setIsSubmit] = useState(false);
-  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   async function createNote() {
     fetch(

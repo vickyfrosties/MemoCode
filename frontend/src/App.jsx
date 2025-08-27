@@ -31,7 +31,7 @@ function App() {
     gaming: "#C62828",
   };
 
-  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   const deleteNote = async (idToDelete) => {
     try {

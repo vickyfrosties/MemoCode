@@ -9,7 +9,7 @@ const NoteCard = ({ categoryColors, deleteNote }) => {
   const { id } = useParams();
   const [memo, setMemo] = useState([]);
 
-  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   async function getNoteById() {
     useEffect(() => {

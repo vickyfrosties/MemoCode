@@ -27,7 +27,7 @@ const NotesLayout = ({
     return filterSelect && matchWord;
   });
 
-  const API_URL = import.meta.env("API_URL") || "http://localhost:8000";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   const handleDelete = async (id) => {
     await deleteNote(id);
