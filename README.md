@@ -7,14 +7,15 @@
 ![Static Badge](https://img.shields.io/badge/mongodb-56a94c?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Static Badge](https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 
-## ❗️ Important note
+## Live Demo
 
-This project is still in development mode. The only way to use it is to run it locally. Make sure to follow all the steps to make it work.
+Check out the live version of MemoCode here:
+[https://memo-code.vercel.app/](https://memo-code.vercel.app/)
 
 ## Table of Contents
 
 - [MemoCode](#memocode)
-  - [❗️ Important note](#️-important-note)
+  - [Live Demo](#live-demo)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Purpose](#purpose)
@@ -27,14 +28,33 @@ This project is still in development mode. The only way to use it is to run it l
   - [Usage](#usage)
     - [Client](#client)
     - [Server](#server)
+  - [Features](#features)
   - [Roadmap](#roadmap)
+  - [License](#license)
 
 ## Introduction
 
 MemoCode is a full-stack web application built with **React**, **Express**, **Node** and **MongoDB**. It allows you to create notes, read, edit and delete them as long as you like. It uses a clean and responsive interface.
 
-<div style="text-align: center;">
-<img src="./frontend/public/screenshots/homepage.gif" alt="drawing" width="450"/>
+<div style="text-align: center;" width="100%" height="100%">
+<img src="./frontend/public/screenshots/homepage.gif" alt="drawing" />
+<div style="display: flex; gap: 5px; flex-wrap: wrap; justify-content: space-evenly;">
+
+<div style="width: 100%; display: flex; justify-content: space-evenly; align-items: center; gap: 50px;">
+<img src="./frontend/public/screenshots/homepage-tablet.png"
+width="250px"
+>
+
+<img src="./frontend/public/screenshots/editMemo.png"
+width="250px" >
+
+<img src="./frontend/public/screenshots/noteById.jpeg"
+width="250px"
+/>
+
+</div>
+
+</div>
 </div>
 
 ### Purpose
@@ -187,24 +207,38 @@ You should see a logging message such as :
 
 This is the sign that the server and database are running and so the project is ready to be used. Next step, go on [http://localhost:5173](http://localhost:5173/) in your browser it should open the web application.
 
+## Features
+
+MemoCode features that are currently available:
+
+- Create, edit, delete and read your notes
+- MongoDB Atlas integration
+- RESTful API with Express
+- Responsive and clean UI
+- SCSS/SASS for styling
+
 ## Roadmap
 
-This is a list of the future features that I will implement.
+You will find all the features that I will implement in the future.
 
-- **Deploy an online demo**
-
-Have a direct access to the project without having to run it on a local machine.
-
-- **Add filters categories**
+- [ ] **Add custom filters categories**
 
 Possibility to create as many personal filters as you want.
 
-- **Add several links sources**
+- [ ] **Allow multiple links sources**
 
 Add more than one link to make the information more reliable and complete.
 
-- **Authentification system**
+- [ ] **Implement authentification system**
 
-Implement both register & login system for security purposes and user experience.
+Implement both register & login system for security purposes and user experience. Each user will have access to their own memos without having to create a personal cluster.
 
-Each user will have access to their own memos without having to create a personal cluster.
+- [ ] **Create dynamic filter words indication**
+
+Word filter overlined to indicate where does the word match in the note description or title.
+
+## License
+
+This project is for demonstration purposes only.
+
+All rights reserved © 2025 Sounia Mhalla.
