@@ -1,6 +1,15 @@
 @use "/src/mixins";
 @use "/src/variables";
 
+.spinner_message {
+  margin: 0;
+  width: 95vw;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .arrow-container {
   display: flex;
   align-items: center;

@@ -4,6 +4,7 @@ import style from "../NoteCard/NoteCard.module.scss";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import EditNote from "../../containers/EditNote/EditNote";
 import BackTo from "../BackTo/BackTo";
+import Loader from "../Loader/Loader";
 
 const NoteCard = ({ categoryColors, deleteNote }) => {
   const { id } = useParams();
@@ -43,7 +44,9 @@ const NoteCard = ({ categoryColors, deleteNote }) => {
 
       <section className={style["note-container"]}>
         {memo.length === 0 ? (
-          <p>Loading...</p>
+          <div className={style["spinner_message"]}>
+            <Loader />
+          </div>
         ) : (
           <div key={memo._id} className={style["card_container"]}>
             <div className={style["card_info_section_content"]}>
