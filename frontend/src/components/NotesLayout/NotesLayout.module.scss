@@ -19,6 +19,7 @@
     width: 90%;
     margin: auto;
     margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
 
     @include mixins.phone {
       font-size: 1.3em;
