@@ -5,8 +5,8 @@ const NavBar = ({ resetFilters }) => {
   return (
     <>
       <nav className={style["navigation"]}>
-        <Link to="/" onClick={resetFilters}>
-          <div className={style["navigation_logo_container"]}>
+        <div className={style["navigation_logo_container"]}>
+          <Link to="/" onClick={resetFilters}>
             <div className={style["navigation_logo"]}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -19,8 +19,8 @@ const NavBar = ({ resetFilters }) => {
               </svg>
             </div>
             <h1>MemoCode</h1>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </nav>
     </>
   );

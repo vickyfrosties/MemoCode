@@ -9,30 +9,31 @@
   justify-content: start;
   align-items: center;
 
-  @include mixins.phone {
-    background-color: #ee4266;
-  }
-
   a {
-    margin-left: 3rem;
-    color: black;
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
   &_logo_container {
-    color: white;
-    width: 100%;
     display: flex;
+    margin-left: 3rem;
     align-items: center;
     padding: 0 2rem 0 2rem;
     border-radius: 0.5ch;
-    background-color: #ee4266;
+    background-color: variables.$logo;
 
     @include mixins.phone {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
       background-color: none;
+      justify-content: center;
     }
+
     h1 {
       padding: 0 1ch 0 1ch;
+      color: white;
     }
   }
   &_logo {
