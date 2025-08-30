@@ -1,23 +1,42 @@
 @use "/src/variables";
+@use "/src/mixins";
 
 .navigation {
-  height: 5rem;
   width: auto;
+  height: 2rem;
+  padding: 1.5em 0 1.5em 0;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 
-  a {
-    color: black;
+  @include mixins.phone {
+    background-color: #ee4266;
+  }
 
+  a {
+    margin-left: 3rem;
+    color: black;
     text-decoration: none;
   }
 
-  h1 {
-    background-color: #ee4266;
+  &_logo_container {
     color: white;
-
+    width: 100%;
+    display: flex;
+    align-items: center;
     padding: 0 2rem 0 2rem;
-    border-radius: 20px;
+    border-radius: 0.5ch;
+    background-color: #ee4266;
+
+    @include mixins.phone {
+      background-color: none;
+    }
+    h1 {
+      padding: 0 1ch 0 1ch;
+    }
+  }
+  &_logo {
+    display: flex;
+    align-items: center;
   }
 }
