@@ -1,0 +1,38 @@
+@use "/src/variables";
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  .loader {
+    width: 55px;
+    aspect-ratio: 1;
+    --g1: conic-gradient(from 45deg at 3px 3px, #031a6b 90deg);
+    --g2: conic-gradient(from -90deg at 22px 22px, #8197f8 90deg);
+    --g3: conic-gradient(from -90deg at 22px 22px, #ee4266 90deg);
+    background: var(--g1), var(--g2), var(--g3), var(--g1);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    animation: loading 1s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 0 0, 0 100%, 100% 100%;
+  }
+  25% {
+    background-position: 100% 0, 0 100%, 100% 100%;
+  }
+  50% {
+    background-position: 100% 0, 0 0, 100% 100%;
+  }
+  75% {
+    background-position: 100% 0, 0 0, 0 100%;
+  }
+  100% {
+    background-position: 100% 100%, 0 0, 0 100%;
+  }
+}

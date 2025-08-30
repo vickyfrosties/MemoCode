@@ -2,13 +2,14 @@ import { Link } from "react-router";
 import DeleteNote from "../../containers/DeleteNote/DeleteNote";
 import style from "./NotesCard.module.scss";
 import EditNote from "../../containers/EditNote/EditNote";
+import Loader from "../Loader/Loader";
 
 const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
   return (
     <>
       {notes.length === 0 ? (
         <div className={style["spinner_message"]}>
-          <p>No notes yet.</p>
+          <Loader />
         </div>
       ) : notesFiltered.length === 0 ? (
         <p className={style["spinner_message"]}>
