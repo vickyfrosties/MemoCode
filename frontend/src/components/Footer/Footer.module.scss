@@ -1,3 +1,5 @@
+@use "/src/mixins";
+
 .footer {
   background-color: #f7758d;
   height: 10%;
@@ -8,4 +10,9 @@
   width: 100%;
   color: white;
   flex-direction: column;
+
+  @include mixins.sm-phone {
+    font-weight: 400;
+    font-size: 12px;
+  }
 }
