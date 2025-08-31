@@ -1,10 +1,19 @@
+import { useNavigate } from "react-router";
 import style from "./DeleteNote.module.scss";
 
 const DeleteNote = ({ id, deleteNote }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    deleteNote(id);
+    navigate("/notes");
+    alert("Note has been deleted with success!");
+  };
   return (
     <>
       <div className={style["button-container"]}>
-        <button onClick={() => deleteNote(id)}>
+        <button onClick={handleClick}>
           <svg
             className={style["button-container-img"]}
             xmlns="http://www.w3.org/2000/svg"
