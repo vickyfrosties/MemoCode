@@ -14,18 +14,20 @@ const NotesLayout = ({
   notes,
   setNotes,
 }) => {
-  const notesFiltered = notes.filter((note) => {
-    const filterSelect =
-      !selectedCategory ||
-      selectedCategory === "all" ||
-      note.category === selectedCategory;
+  const notesFiltered = Array.isArray(notes)
+    ? notes.filter((note) => {
+        const filterSelect =
+          !selectedCategory ||
+          selectedCategory === "all" ||
+          note.category === selectedCategory;
 
-    const matchWord =
-      note.title.toLowerCase().includes(word.toLowerCase()) ||
-      note.description.toLowerCase().includes(word.toLowerCase());
+        const matchWord =
+          note.title.toLowerCase().includes(word.toLowerCase()) ||
+          note.description.toLowerCase().includes(word.toLowerCase());
 
-    return filterSelect && matchWord;
-  });
+        return filterSelect && matchWord;
+      })
+    : [];
 
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
@@ -51,7 +53,7 @@ const NotesLayout = ({
       })
 
       .then((data) => {
-        setNotes(data.data);
+        setNotes(Array.isArray(data.data) ? data.data : []);
       })
       .catch((error) => {
         console.error("An error occured with the request:", error.message);
