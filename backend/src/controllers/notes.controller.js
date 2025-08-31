@@ -136,7 +136,7 @@ export async function deleteDemoNote(request, response) {
         status: 404,
         success: false,
         message: "Note not found.",
-        data: null,
+        data: [],
         error: `No note exist with ID: ${id}`,
       });
     }
@@ -148,7 +148,7 @@ export async function deleteDemoNote(request, response) {
     return response.status(200).json({
       status: 200,
       message: "Note has been successfully deleted.",
-      data: `Id note: ${id}`,
+      data: [],
       error: null,
       success: true,
     });
@@ -156,7 +156,7 @@ export async function deleteDemoNote(request, response) {
     return response.status(500).json({
       status: 500,
       message: "An error occured while created a note.",
-      data: null,
+      data: [],
       error: error.message,
       success: false,
     });
