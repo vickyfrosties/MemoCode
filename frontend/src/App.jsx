@@ -96,6 +96,8 @@ function App() {
             element={
               <NoteCard
                 deleteNote={deleteNote}
+                notes={notes}
+                setNotes={setNotes}
                 categoryColors={categoryColors}
               />
             }
