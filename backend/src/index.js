@@ -27,6 +27,5 @@ app.use("/", notesRouter);
 app.listen(prod, async () => {
   console.log(`Server is running on PORT ${prod}`);
 
-  await validateNote();
   await validateDemoNote();
 });
