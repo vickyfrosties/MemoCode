@@ -10,18 +10,12 @@ export async function getDemoNotes(request, response) {
     const demoCollection = db.collection(process.env.MONGO_COLLECTION);
     const demoNotes = await demoCollection.find().toArray();
 
-    if (demoNotes.length === 0) {
-      return response.status(204).json({
-        status: 204,
-        message: "No notes are existing.",
-        data: [],
-        error: "No Content.",
-        success: true,
-      });
-    }
     return response.status(200).json({
       status: 200,
-      message: "Memo have been successfully retrieved.",
+      message:
+        demoNotes.length === 0
+          ? "No notes are existing."
+          : "Memo have been successfully retrieved.",
       data: demoNotes,
       error: null,
       success: true,
@@ -212,20 +206,13 @@ export async function getNotes(request, response) {
     const dataResult = notesCollection.find();
     const dataArray = await dataResult.toArray();
 
-    if (dataArray.length === 0) {
-      return response.status(204).json({
-        status: 204,
-        message: "No notes yet.",
-        data: [],
-        error: "No Content.",
-        success: true,
-      });
-    }
-
     return response.status(200).json({
       status: 200,
-      message: "Memo have been successfully retrieved.",
-      data: demoNotes,
+      message:
+        dataArray.length === 0
+          ? "No notes yet."
+          : "Memo have been successfully retrieved.",
+      data: dataArray,
       error: null,
       success: true,
     });
