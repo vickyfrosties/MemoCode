@@ -184,6 +184,12 @@ const NoteForm = ({ data, setFormData, resetDataForm }) => {
                     setFormData({ ...data, link: e.target.value })
                   }
                 />
+                <p className={style["form_link_warning"]}>
+                  You can add up to 3 links url.
+                </p>
+                <button className={style["form_link_add_button"]} type="button">
+                  + Add a link
+                </button>
                 {formErrors.link && (
                   <p className={style["form_errors"]}>{formErrors.link}</p>
                 )}
