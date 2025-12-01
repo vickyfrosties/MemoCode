@@ -37,6 +37,24 @@ const NotesLayout = ({
     setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
   };
 
+  const highlightWord = (text, word) => {
+    if (!word || word.trim() === "") return text;
+
+    const regex = new RegExp(`(${word})`, "gi");
+
+    const chunks = text.split(regex);
+
+    return chunks.map((chunk, i) =>
+      regex.test(chunk) ? (
+        <span key={i} style={{ backgroundColor: "yellow" }}>
+          {chunk}
+        </span>
+      ) : (
+        chunk
+      )
+    );
+  };
+
   useEffect(() => {
     fetch(`${API_URL}/notes`, {
       mode: "cors",
@@ -73,6 +91,8 @@ const NotesLayout = ({
       <section className={style["notes-container-container"]}>
         <section className={style["notes-container"]}>
           <NotesCard
+            highlightWord={highlightWord}
+            word={word}
             notesFiltered={notesFiltered}
             notes={notes}
             deleteNote={handleDelete}

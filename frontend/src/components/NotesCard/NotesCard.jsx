@@ -4,7 +4,14 @@ import style from "./NotesCard.module.scss";
 import EditNote from "../../containers/EditNote/EditNote";
 import Loader from "../Loader/Loader";
 
-const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
+const NotesCard = ({
+  deleteNote,
+  categoryColors,
+  notesFiltered,
+  notes,
+  word,
+  highlightWord,
+}) => {
   return (
     <>
       {notes.length === 0 ? (
@@ -25,7 +32,7 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
             <section className={style["card_second_section"]}>
               <div className={style["card_content"]}>
                 <div className={style["card_content_title"]}>
-                  <h3>{note.title}</h3>
+                  <h3>{highlightWord(note.title, word)}</h3>
                 </div>
                 <section className={style["card_content_section"]}>
                   <div
@@ -47,7 +54,10 @@ const NotesCard = ({ deleteNote, categoryColors, notesFiltered, notes }) => {
               </div>
               <div className={style["card_container_content_description"]}>
                 <p className={style["card_content_description"]}>
-                  {`${note.description.substring(0, 250) + "..."}`}
+                  {highlightWord(
+                    note.description.substring(0, 250) + "...",
+                    word
+                  )}
                 </p>
               </div>
 
