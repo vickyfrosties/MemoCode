@@ -233,7 +233,7 @@ Add more than one link to make the information more reliable and complete.
 
 Implement both register & login system for security purposes and user experience. Each user will have access to their own memos without having to create a personal cluster.
 
-- [ ] **Create dynamic filter words indication**
+- [x] **~~Create dynamic filter words indication~~**
 
 Word filter overlined to indicate where does the word match in the note description or title.
 
