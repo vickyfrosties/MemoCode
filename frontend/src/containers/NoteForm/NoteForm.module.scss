@@ -154,6 +154,26 @@
       flex-direction: column;
     }
 
+    &_link_add_button {
+      width: 8rem;
+      height: 2rem;
+      padding: 0 4px 0 4px;
+      cursor: pointer;
+      background-color: #516ff5;
+      border: none;
+      border-radius: 0.5ch;
+      color: white;
+      text-align: center;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &_link_warning {
+      font-size: 12px;
+    }
+
     &_validation_indication {
       font-size: 12px;
       padding-top: 5px;
