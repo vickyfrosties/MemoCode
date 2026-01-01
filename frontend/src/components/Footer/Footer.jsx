@@ -5,7 +5,7 @@ const Footer = () => {
     <>
       <footer className={style["footer"]}>
         <p>MemoCode</p>
-        <p>© All rights reserved - 2025 Sounia Mhalla.</p>
+        <p>© All rights reserved - {new Date().getFullYear()} Sounia Mhalla.</p>
       </footer>
     </>
   );
